@@ -7,11 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('brunocharlie.png'); /* Set the brunocharlie.png as the background */
-            background-size: contain; /* Ensure the entire image is visible */
-            background-repeat: no-repeat; /* Prevent the image from repeating */
-            background-position: center; /* Center the background image */
-            height: 100vh; /* Set the height to full viewport height */
+            background-color: #f4f4f4; /* Set a solid color background */
             margin: 0;
             padding: 0;
         }
@@ -27,20 +23,20 @@
 
         .container {
             display: flex; /* Use flexbox for layout */
-            align-items: center; /* Center items vertically */
-            justify-content: space-between; /* Space out items */
+            align-items: flex-start; /* Align items to the start */
             padding: 2rem;
             text-align: left; /* Align text to the left */
+            justify-content: space-between; /* Space out items */
         }
 
         .text-content {
             flex: 1; /* Allow text to take available space */
+            margin-right: 20px; /* Space between text and image */
         }
 
         img {
             max-width: 300px; /* Set a max width for the image */
             height: auto; /* Maintain aspect ratio */
-            margin-left: 20px; /* Space between text and image */
         }
 
         .button {
@@ -51,17 +47,14 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            background-color: #2F4F4F; /* Dark slate gray */
             transition: background-color 0.3s;
         }
-        .button1 { background-color: #FF5733; } /* Red */
-        .button2 { background-color: #33FF57; } /* Green */
-        .button3 { background-color: #3357FF; } /* Blue */
-        .button4 { background-color: #FF33A1; } /* Pink */
 
         .button:hover {
             opacity: 0.8; /* Slightly fade on hover */
         }
-        
+
         ul {
             list-style-type: none; /* Remove bullet points */
             padding: 0; /* Remove default padding */
@@ -86,10 +79,7 @@
             <p>Email: jim@thejimross.co.uk</p>
 
             <h2>Useful Links</h2>
-            <a href="page1.html" class="button button1">Page 1</a>
-            <a href="page2.html" class="button button2">Page 2</a>
-            <a href="page3.html" class="button button3">Page 3</a>
-            <a href="page4.html" class="button button4">Page 4</a>
+            <a href="page1.html" class="button">Go to Page 1</a> <!-- Only one button -->
         </div>
         <img src="brunocharlie.png" alt="Bruno Charlie"> <!-- Include the image here -->
     </div>

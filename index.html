@@ -19,18 +19,49 @@
         }
         .container {
             padding: 2rem;
+            text-align: center; /* Center the content */
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .button1 { background-color: #FF5733; } /* Red */
+        .button2 { background-color: #33FF57; } /* Green */
+        .button3 { background-color: #3357FF; } /* Blue */
+        .button4 { background-color: #FF33A1; } /* Pink */
+
+        .button:hover {
+            opacity: 0.8; /* Slightly fade on hover */
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>A message for you...</h1>
+        <h1>Congratulations to you both!</h1>
     </header>
     <div class="container">
-        <h2>About Me</h2>
-        <p>I like trains.</p>
+        <h2>How to be a good parent:</h2>
+        <ul>
+            <li>Feed the child</li>
+            <li>Don't let Jordan play golf</li>
+            <li>Milk - Dairy/Plant based (Optional)</li>
+            <li>Sugar/Honey (Optional)</li>
+        </ul>
+        
         <h2>Contact Information</h2>
         <p>Email: jim@thejimross.co.uk</p>
+
+        <h2>Useful Links</h2>
+        <a href="page1.html" class="button button1">Page 1</a>
+        <a href="page2.html" class="button button2">Page 2</a>
+        <a href="page3.html" class="button button3">Page 3</a>
+        <a href="page4.html" class="button button4">Page 4</a>
     </div>
 </body>
 </html>

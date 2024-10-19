@@ -17,8 +17,8 @@
             color: #fff;
             padding: 1rem;
             text-align: center;
-            position: relative; /* Set relative positioning */
-            z-index: 10; /* Ensure it's above the background */
+            width: 100%; /* Ensure the header spans the full width */
+            box-sizing: border-box; /* Prevent padding from breaking layout */
         }
 
         .container {
@@ -31,10 +31,11 @@
 
         .text-content {
             max-width: 500px; /* Max width for better alignment */
+            width: 100%; /* Ensure content uses available width on mobile */
         }
 
         img {
-            width: 400px; /* Set width of the image */
+            width: 400px; /* Set width of the image to be twice the previous size */
             height: auto; /* Maintain aspect ratio */
             border-radius: 10px; /* Rounded corners for the image */
             margin-top: 20px; /* Add margin above the image */
@@ -70,6 +71,18 @@
         .note {
             margin-top: 40px; /* Increased gap between the list and the text */
         }
+
+        /* Media query to adjust for smaller screens */
+        @media (max-width: 600px) {
+            img {
+                width: 100%; /* Make the image responsive */
+                max-width: 300px; /* Set a max width for smaller screens */
+            }
+            
+            header {
+                padding: 1.5rem; /* Slightly increase padding on smaller screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -83,10 +96,10 @@
                 <li>Feed the child</li>
                 <li>That's pretty much it</li>
             </ul>
-            <p class="note">On a serious note, here's a link that may be helpful</p>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Parenting 101</a> <!-- Updated button text -->
+            <p class="note">On a serious note, I have added a link to some useful advice and guidance</p>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Parenting 101</a>
         </div>
-        <img src="brunocharlie.png" alt="Bruno Charlie"> <!-- Include the image here -->
+        <img src="brunocharlie.png" alt="Bruno Charlie">
     </div>
 </body>
 </html>

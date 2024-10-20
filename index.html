@@ -10,6 +10,9 @@
             background-color: #e9f1f7; /* Light blue background */
             margin: 0;
             padding: 0;
+            min-height: 100vh; /* Ensure the body takes up full height */
+            display: flex;
+            flex-direction: column;
         }
 
         header {
@@ -27,6 +30,7 @@
             align-items: center; /* Center items horizontally */
             padding: 2rem;
             text-align: center; /* Center text */
+            flex-grow: 1; /* Allow container to grow */
         }
 
         .text-content {
@@ -72,6 +76,16 @@
             margin-top: 40px; /* Increased gap between the list and the text */
         }
 
+        footer {
+            background-color: rgba(70, 130, 180, 0.9); /* Steel blue background */
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
         /* Media query to adjust for smaller screens */
         @media (max-width: 600px) {
             img {
@@ -101,5 +115,8 @@
         </div>
         <img src="brunocharlie.png" alt="Bruno Charlie">
     </div>
+    <footer>
+        Love from Jim & Lauren
+    </footer>
 </body>
 </html>

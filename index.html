@@ -1,123 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="images.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <meta name="description" content="A modern website using JavaScript for dynamic content">
+    <title>Home - Silly Little Things</title>
+    
+    <!-- Link to modern CSS reset -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #e9f1f7; /* Light blue background */
+            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
-            min-height: 100vh; /* Ensure the body takes up full height */
+            background-color: #f4f4f4;
+            color: #333;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
-
-        header {
-            background-color: rgba(70, 130, 180, 0.9); /* Steel blue background */
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-            width: 100%; /* Ensure the header spans the full width */
-            box-sizing: border-box; /* Prevent padding from breaking layout */
-        }
-
         .container {
-            display: flex; /* Use flexbox for layout */
-            flex-direction: column; /* Stack items vertically */
-            align-items: center; /* Center items horizontally */
-            padding: 2rem;
-            text-align: center; /* Center text */
-            flex-grow: 1; /* Allow container to grow */
-        }
-
-        .text-content {
-            max-width: 500px; /* Max width for better alignment */
-            width: 100%; /* Ensure content uses available width on mobile */
-        }
-
-        img {
-            width: 400px; /* Set width of the image to be twice the previous size */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 10px; /* Rounded corners for the image */
-            margin-top: 20px; /* Add margin above the image */
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 10px 0; /* Margin above and below */
-            font-size: 16px;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            background-color: #4682B4; /* Steel blue */
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            opacity: 0.8; /* Slightly fade on hover */
-        }
-
-        ul {
-            list-style-type: none; /* Remove bullet points */
-            padding: 0; /* Remove default padding */
-            text-align: center; /* Center the list items */
-            margin: 10px 0; /* Add margin above and below the list */
-        }
-
-        li {
-            margin-bottom: 10px; /* Add space between list items */
-        }
-
-        .note {
-            margin-top: 40px; /* Increased gap between the list and the text */
-        }
-
-        footer {
-            background-color: rgba(70, 130, 180, 0.9); /* Steel blue background */
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
             width: 100%;
-            bottom: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-
-        /* Media query to adjust for smaller screens */
-        @media (max-width: 600px) {
-            img {
-                width: 100%; /* Make the image responsive */
-                max-width: 300px; /* Set a max width for smaller screens */
-            }
-            
-            header {
-                padding: 1.5rem; /* Slightly increase padding on smaller screens */
-            }
+        header, footer {
+            background-color: #008080; /* Dark green */
+            color: #ffffff;
+            padding: 20px;
+        }
+        .main-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-header h1 {
+            margin-bottom: 20px; /* Space between title and navigation */
+        }
+        .main-nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between nav items */
+        }
+        .main-nav ul li {
+            margin: 0;
+        }
+        /* Updated styling for nav links */
+        .main-nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            background-color: #006666; /* Slightly darker than header background */
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            border: 2px solid transparent;
+        }
+        /* Hover and focus effects */
+        .main-nav ul li a:hover,
+        .main-nav ul li a:focus {
+            background-color: #004c4c; /* Darker green on hover */
+            border-color: #ffffff; /* White border on hover */
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+        /* Ensure the content expands to take up space */
+        .content {
+            flex: 1; /* Make the content area expand */
+        }
+        .intro h2 {
+            font-size: 28px;
+            color: #005050;
+        }
+        .intro p {
+            font-size: 16px;
+        }
+        .dynamic-content p {
+            font-size: 14px;
+            color: #005050;
+        }
+        /* Style for the footer's date and time */
+        .date-time {
+            text-align: center;
+            margin-top: 10px;
+        }
+        /* Ensure no extra space in footer and its child elements */
+        footer {
+            margin: 0;
+            padding: 0;
+        }
+        .main-footer p {
+            margin: 0;
+            padding: 0;
+        }
+        .date-time {
+            margin: 0;
+            padding: 0;
+        }
+        .switch {
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Congratulations to you both!</h1>
-    </header>
-    <div class="container">
-        <div class="text-content">
-            <h2>How to be a good parent:</h2>
-            <ul>
-                <li>Feed the child</li>
-                <li>That's pretty much it</li>
-            </ul>
-            <p class="note">On a serious note, I have added a link to some useful advice and guidance</p>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button">Parenting 101</a>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <h1>Silly Little Things</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        <img src="brunocharlie.png" alt="Bruno Charlie">
-    </div>
-    <footer>
-        Love from Jim & Lauren
+    </header>
+
+    <!-- Main content -->
+    <main class="container content">
+        <section class="intro">
+            <h2>Silly Little Things</h2>
+            <p>This site is built with modern web development techniques using responsive design.</p>
+            <p>
+                <a href="food/brownies.pdf" target="_blank">
+                    <img src="food/brownies.png" alt="Link to Brownies Document" style="width: 150px; height: auto;">
+                </a>
+            </p>
+            <p>
+                <video width="320" height="240" controls>
+                    <source src="images/jose gonzales.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </p>
+            <p>
+                <video width="320" height="240" controls>
+                    <source src="images/theory - I hate my life.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </p>
+            <p>
+                <video width="320" height="240" controls>
+                    <source src="images/you me at six - take on the world.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </p>
+        </section>
+        
+        <section class="dynamic-content">
+            <!-- Dynamic content can go here -->
+        </section>
+    </main>
+
+     <!-- Footer -->
+     <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span>    |    Silly Little Things    |    All Rights Reserved</p>
+            <!-- Date and Time beneath the footer text -->
+            <p id="current-date-time" class="date-time"></p>
+        </div>
     </footer>
+
+    <!-- JavaScript to display the current date and time once -->
+    <script>
+        function displayDateTime() {
+            const now = new Date();
+            const dateOptions = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const timeOptions = { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit'
+            };
+            const formattedDate = now.toLocaleDateString('en-US', dateOptions);
+            const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+            document.getElementById('current-date-time').innerHTML = `${formattedDate}, ${formattedTime}`;
+        }
+        displayDateTime(); // Display date and time once when the page loads
+    </script>
+    
+
+    <!-- Link to external JavaScript file -->
+    <script src="js/script.js"></script>
 </body>
 </html>

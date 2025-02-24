@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A modern website using JavaScript for dynamic content">
-    <title>Home - Silly Little Things</title>
+    <meta name="description" content="The Jim Ross">
+    <title>The Jim Ross</title>
     
     <!-- Link to modern CSS reset -->
     <link rel="stylesheet" href="css/style.css">
@@ -110,6 +110,30 @@
             margin: 0;
             padding: 0;
         }
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .video-container video {
+            width: 320px;
+            height: auto;
+            flex: 1 1 auto;
+            object-fit: contain;
+        }
+        .video-container .small-video {
+            width: 160px; /* Smaller width for the two new videos */
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column;
+            }
+            .video-container video {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -131,30 +155,31 @@
     <main class="container content">
         <section class="intro">
             <h2>Silly Little Things</h2>
-            <p>This site is built with modern web development techniques using responsive design.</p>
+            <p>This is a mess around website for me to experiment with.</p>
+            <!-- Added subtitle here -->
+            <h3>Delicious Brownies</h3>
             <p>
-                <a href="food/Brownies.PDF" target="_blank">
-                    <img src="food/Brownies.PNG" alt="Link to Brownies Document" style="width: 150px; height: auto;">
+                <a href="https://sillylittlethings.co.uk/food/Brownies.pdf" target="_blank">
+                    <img src="https://sillylittlethings.co.uk/food/Brownies.png" alt="Link to Brownies Document" style="width: 150px; height: auto;">
                 </a>
             </p>
-            <p>
-                <video width="320" height="240" controls>
-                    <source src="images/Jose Gonzales.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
+            <div class="video-container">
+                <video controls>
+                    <source src="https://sillylittlethings.co.uk/images/Jose%20Gonzales.mp4" type="video/mp4">
                 </video>
-            </p>
-            <p>
-                <video width="320" height="240" controls>
-                    <source src="images/Theory - I Hate My Life.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
+                <video controls>
+                    <source src="https://sillylittlethings.co.uk/images/theory.mp4" type="video/mp4">
                 </video>
-            </p>
-            <p>
-                <video width="320" height="240" controls>
-                    <source src="images/You Me at Siz - Take on the World.MP4" type="video/mp4">
-                    Your browser does not support the video tag.
+                <video controls>
+                    <source src="https://sillylittlethings.co.uk/images/yma6.mp4" type="video/mp4">
                 </video>
-            </p>
+                <video controls class="small-video">
+                    <source src="https://sillylittlethings.co.uk/images/2.mp4" type="video/mp4">
+                </video>
+                <video controls class="small-video">
+                    <source src="https://sillylittlethings.co.uk/images/9.mp4" type="video/mp4">
+                </video>
+            </div>
         </section>
         
         <section class="dynamic-content">
@@ -193,7 +218,6 @@
         displayDateTime(); // Display date and time once when the page loads
     </script>
     
-
     <!-- Link to external JavaScript file -->
     <script src="js/script.js"></script>
 </body>

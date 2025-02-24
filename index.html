@@ -1,222 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The Jim Ross">
-    <title>The Jim Ross</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Jim Ross">
+  <title>The Jim Ross</title>
+  
+  <!-- Link to modern CSS reset -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Google Fonts for better typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      /* Subtle light gradient background */
+      background: linear-gradient(135deg, #ffffff, #f4f4f4);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
     
-    <!-- Link to modern CSS reset -->
-    <link rel="stylesheet" href="css/style.css">
+    /* Header & Footer with a vibrant gradient */
+    header, footer {
+      background: linear-gradient(135deg, #053957, #3d84ad);
+      color: #ffffff;
+      padding: 20px;
+    }
+    .main-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .main-header h1 {
+      margin-bottom: 20px;
+    }
     
-    <!-- Google Fonts for better typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    /* Navigation styling with subtle gradient on links */
+    .main-nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .main-nav ul li {
+      margin: 0;
+    }
+    .main-nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      /* Use a matching gradient for the nav links */
+      background: linear-gradient(135deg, #053957, #3d84ad);
+      border-radius: 5px;
+      transition: background 0.3s, transform 0.3s;
+      border: 2px solid transparent;
+    }
+    .main-nav ul li a:hover,
+    .main-nav ul li a:focus {
+      background: linear-gradient(135deg, #021824, #0e3850);
+      border-color: #ffffff;
+      transform: scale(1.05);
+    }
     
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header, footer {
-            background-color: #008080; /* Dark green */
-            color: #ffffff;
-            padding: 20px;
-        }
-        .main-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .main-header h1 {
-            margin-bottom: 20px; /* Space between title and navigation */
-        }
-        .main-nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px; /* Space between nav items */
-        }
-        .main-nav ul li {
-            margin: 0;
-        }
-        /* Updated styling for nav links */
-        .main-nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            padding: 10px 20px;
-            background-color: #006666; /* Slightly darker than header background */
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-            border: 2px solid transparent;
-        }
-        /* Hover and focus effects */
-        .main-nav ul li a:hover,
-        .main-nav ul li a:focus {
-            background-color: #004c4c; /* Darker green on hover */
-            border-color: #ffffff; /* White border on hover */
-            transform: scale(1.05); /* Slight zoom effect */
-        }
-        /* Ensure the content expands to take up space */
-        .content {
-            flex: 1; /* Make the content area expand */
-        }
-        .intro h2 {
-            font-size: 28px;
-            color: #005050;
-        }
-        .intro p {
-            font-size: 16px;
-        }
-        .dynamic-content p {
-            font-size: 14px;
-            color: #005050;
-        }
-        /* Style for the footer's date and time */
-        .date-time {
-            text-align: center;
-            margin-top: 10px;
-        }
-        /* Ensure no extra space in footer and its child elements */
-        footer {
-            margin: 0;
-            padding: 0;
-        }
-        .main-footer p {
-            margin: 0;
-            padding: 0;
-        }
-        .date-time {
-            margin: 0;
-            padding: 0;
-        }
-        .switch {
-            margin: 0;
-            padding: 0;
-        }
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .video-container video {
-            width: 320px;
-            height: auto;
-            flex: 1 1 auto;
-            object-fit: contain;
-        }
-        .video-container .small-video {
-            width: 160px; /* Smaller width for the two new videos */
-            height: auto;
-        }
-        @media (max-width: 768px) {
-            .video-container {
-                flex-direction: column;
-            }
-            .video-container video {
-                width: 100%;
-                height: auto;
-            }
-        }
-    </style>
+    /* Content expands to fill space */
+    .content {
+      flex: 1;
+    }
+    .intro h2 {
+      font-size: 28px;
+      color: #005050;
+    }
+    .intro p {
+      font-size: 16px;
+    }
+    .dynamic-content p {
+      font-size: 14px;
+      color: #005050;
+    }
+    
+    /* Footer date and time styling */
+    .date-time {
+      text-align: center;
+      margin-top: 10px;
+    }
+    footer, .main-footer p, .date-time, .switch {
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Video container styles */
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .video-container video {
+      width: 320px;
+      height: auto;
+      flex: 1 1 auto;
+      object-fit: contain;
+    }
+    .video-container .small-video {
+      width: 160px;
+      height: auto;
+    }
+    @media (max-width: 768px) {
+      .video-container {
+        flex-direction: column;
+      }
+      .video-container video {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <h1>The Jim Ross</h1>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="container">
+      <h1>The Jim Ross</h1>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <!-- Main content -->
-    <main class="container content">
-        <section class="intro">
-            <h2>Delicious Brownies</h2>
-           
-            <p>
-                <a href="https://sillylittlethings.co.uk/food/Brownies.pdf" target="_blank">
-                    <img src="https://sillylittlethings.co.uk/food/Brownies.png" alt="Link to Brownies Document" style="width: 150px; height: auto;">
-                </a>
-            </p>
-            <div class="video-container">
-                <video controls>
-                    <source src="https://sillylittlethings.co.uk/images/Jose%20Gonzales.mp4" type="video/mp4">
-                </video>
-                <video controls>
-                    <source src="https://sillylittlethings.co.uk/images/theory.mp4" type="video/mp4">
-                </video>
-                <video controls>
-                    <source src="https://sillylittlethings.co.uk/images/yma6.mp4" type="video/mp4">
-                </video>
-                <video controls class="small-video">
-                    <source src="https://sillylittlethings.co.uk/images/2.mp4" type="video/mp4">
-                </video>
-                <video controls class="small-video">
-                    <source src="https://sillylittlethings.co.uk/images/9.mp4" type="video/mp4">
-                </video>
-            </div>
-        </section>
-        
-        <section class="dynamic-content">
-            <!-- Dynamic content can go here -->
-        </section>
-    </main>
-
-     <!-- Footer -->
-     <footer class="main-footer">
-        <div class="container">
-            <p>&copy; <span id="year"></span>    |    Silly Little Things    |    All Rights Reserved</p>
-            <!-- Date and Time beneath the footer text -->
-            <p id="current-date-time" class="date-time"></p>
-        </div>
-    </footer>
-
-    <!-- JavaScript to display the current date and time once -->
-    <script>
-        function displayDateTime() {
-            const now = new Date();
-            const dateOptions = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            };
-            const timeOptions = { 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit'
-            };
-            const formattedDate = now.toLocaleDateString('en-US', dateOptions);
-            const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
-            document.getElementById('current-date-time').innerHTML = `${formattedDate}, ${formattedTime}`;
-        }
-        displayDateTime(); // Display date and time once when the page loads
-    </script>
+  <!-- Main content -->
+  <main class="container content">
+    <section class="intro">
+      <h2>Delicious Brownies</h2>
+      <p>
+        <a href="https://sillylittlethings.co.uk/food/Brownies.pdf" target="_blank">
+          <img src="https://sillylittlethings.co.uk/food/Brownies.png" alt="Link to Brownies Document" style="width: 150px; height: auto;">
+        </a>
+      </p>
+      <div class="video-container">
+        <video controls>
+          <source src="https://sillylittlethings.co.uk/images/Jose%20Gonzales.mp4" type="video/mp4">
+        </video>
+        <video controls>
+          <source src="https://sillylittlethings.co.uk/images/theory.mp4" type="video/mp4">
+        </video>
+        <video controls>
+          <source src="https://sillylittlethings.co.uk/images/yma6.mp4" type="video/mp4">
+        </video>
+        <video controls class="small-video">
+          <source src="https://sillylittlethings.co.uk/images/2.mp4" type="video/mp4">
+        </video>
+        <video controls class="small-video">
+          <source src="https://sillylittlethings.co.uk/images/9.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
     
-    <!-- Link to external JavaScript file -->
-    <script src="js/script.js"></script>
+    <section class="dynamic-content">
+      <!-- Dynamic content can go here -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> | Silly Little Things | All Rights Reserved</p>
+      <!-- Date and Time beneath the footer text -->
+      <p id="current-date-time" class="date-time"></p>
+    </div>
+  </footer>
+
+  <!-- JavaScript to display the current date and time once -->
+  <script>
+    function displayDateTime() {
+      const now = new Date();
+      const dateOptions = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      };
+      const timeOptions = { 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        second: '2-digit'
+      };
+      const formattedDate = now.toLocaleDateString('en-US', dateOptions);
+      const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
+      document.getElementById('current-date-time').innerHTML = `${formattedDate}, ${formattedTime}`;
+    }
+    displayDateTime();
+  </script>
+  
+  <!-- Link to external JavaScript file -->
+  <script src="js/script.js"></script>
 </body>
 </html>

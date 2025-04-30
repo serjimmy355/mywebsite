@@ -2,216 +2,199 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Jim Ross">
-  <title>The Jim Ross</title>
-  
-  <!-- Link to modern CSS reset -->
-  <link rel="stylesheet" href="css/style.css">
-  
-  <!-- Google Fonts for better typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  
+  <title>Balloon Pop Reveal</title>
+  <!-- load two fancy script fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@700&display=swap"
+    rel="stylesheet"
+  />
   <style>
-    /* Global Styles */
-    body {
-      font-family: 'Inter', sans-serif;
+    html, body {
       margin: 0;
       padding: 0;
-      /* Subtle light gradient background */
-      background: linear-gradient(135deg, #ffffff, #f4f4f4);
+      overflow: hidden;
+      width: 100vw; height: 100vh;
+      /* joyous sky gradient */
+      background: linear-gradient(180deg, #87CEEB 0%, #E0FFFF 100%);
+      display: flex; justify-content: center; align-items: center;
+      font-family: sans-serif;
+    }
+    /* drifting clouds */
+    .cloud {
+      position: absolute;
+      background: #FFF;
+      width: 200px; height: 60px;
+      border-radius: 50px;
+      filter: blur(8px);
+      opacity: 0.7;
+      animation: cloudMove linear infinite;
+    }
+    @keyframes cloudMove {
+      from { transform: translateX(-250px); }
+      to   { transform: translateX(110vw); }
+    }
+
+    /* BALLOON */
+    .balloon {
+      position: relative;
+      width: 140px; height: 180px;
+      background: #ff69b4;
+      border-radius: 60% 60% 50% 50%;
+      cursor: pointer;
+      transform-origin: bottom center;
+      /* floating animation */
+      animation: float 3s ease-in-out infinite;
+    }
+    .balloon:after {
+      content: '';
+      position: absolute;
+      bottom: -50px; left: 50%;
+      width: 4px; height: 50px;
+      background: #555;
+      transform: translateX(-50%);
+    }
+    /* fancy name */
+    .balloon span {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.4em;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    /* floating keyframes */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    /* pop keyframes */
+    @keyframes pop {
+      0%   { transform: scale(1); opacity: 1; }
+      50%  { transform: scale(1.4); opacity: 1; }
+      100% { transform: scale(0);   opacity: 0; }
+    }
+    .balloon.pop {
+      /* override float animation */
+      animation: pop 0.4s forwards;
+    }
+
+    /* CONFETTI */
+    .confetti {
+      position: absolute;
+      width: 8px; height: 16px;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+    @keyframes fly {
+      0%   { opacity: 1; transform: translate(0,0) rotate(0deg); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); }
+    }
+
+    /* CONGRATS MESSAGE */
+    #message, #from-message {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Dancing Script', cursive;
       color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      pointer-events: none;
+      opacity: 0;
+      white-space: nowrap;
     }
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
+    #message {
+      top: 45%;
+      font-size: 4em;
     }
-    
-    /* Header & Footer with a vibrant gradient */
-    header, footer {
-      background: linear-gradient(135deg, #051a2f, #3d84ad);
-      color: #ffffff;
-      padding: 20px;
+    #from-message {
+      top: 60%;
+      font-size: 2em;
     }
-    .main-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    #message.show, #from-message.show {
+      transition: opacity 0.2s ease-out;
+      opacity: 1;
     }
-    .main-header h1 {
-      margin-bottom: 20px;
+
+    /* per-letter pop */
+    .letter {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(-30px) scale(0.5);
+      animation: letter-pop 0.6s ease-out forwards;
     }
-    
-    /* Navigation styling with subtle gradient on links */
-    .main-nav ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-    .main-nav ul li {
-      margin: 0;
-    }
-    .main-nav ul li a {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 10px 20px;
-      /* Use a matching gradient for the nav links */
-      background: linear-gradient(135deg, #3d84ad, #051a2f);
-      border-radius: 5px;
-      transition: background 0.3s, transform 0.3s;
-      border: 2px solid transparent;
-    }
-    .main-nav ul li a:hover,
-    .main-nav ul li a:focus {
-      background: linear-gradient(135deg, #051a2f, #0e3850);
-      border-color: #ffffff;
-      transform: scale(1.05);
-    }
-    
-    /* Content expands to fill space */
-    .content {
-      flex: 1;
-    }
-    .intro h2 {
-      font-size: 28px;
-      color: #005050;
-    }
-    .intro p {
-      font-size: 16px;
-    }
-    .dynamic-content p {
-      font-size: 14px;
-      color: #005050;
-    }
-    
-    /* Footer date and time styling */
-    .date-time {
-      text-align: center;
-      margin-top: 10px;
-    }
-    footer, .main-footer p, .date-time, .switch {
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* Video container styles */
-    .video-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .video-container video {
-      width: 320px;
-      height: auto;
-      flex: 1 1 auto;
-      object-fit: contain;
-    }
-    .video-container .small-video {
-      width: 160px;
-      height: auto;
-    }
-    @media (max-width: 768px) {
-      .video-container {
-        flex-direction: column;
-      }
-      .video-container video {
-        width: 100%;
-        height: auto;
-      }
+    @keyframes letter-pop {
+      0%   { opacity: 0; transform: translateY(-30px) scale(0.5); }
+      60%  { opacity: 1; transform: translateY(10px)  scale(1.2); }
+      100% { opacity: 1; transform: translateY(0)     scale(1); }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="main-header">
-    <div class="container">
-      <h1>The Jim Ross</h1>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- clouds -->
+  <div class="cloud" style="top: 10%; animation-duration: 25s;"></div>
+  <div class="cloud" style="top: 25%; animation-duration: 30s;"></div>
+  <div class="cloud" style="top: 15%; animation-duration: 20s;"></div>
 
-  <!-- Main content -->
-  <main class="container content">
-    <section class="intro">
-      <h2>Delicious Brownies</h2>
-      <p>
-        <a href="https://sillylittlethings.co.uk/food/Brownies.pdf" target="_blank">
-          <img src="https://sillylittlethings.co.uk/food/Brownies.png" alt="Link to Brownies Document" style="width: 150px; height: auto;">
-        </a>
-      </p>
-      <div class="video-container">
-        <video controls>
-          <source src="https://sillylittlethings.co.uk/images/Jose%20Gonzales.mp4" type="video/mp4">
-        </video>
-        <video controls>
-          <source src="https://sillylittlethings.co.uk/images/theory.mp4" type="video/mp4">
-        </video>
-        <video controls>
-          <source src="https://sillylittlethings.co.uk/images/yma6.mp4" type="video/mp4">
-        </video>
-        <video controls class="small-video">
-          <source src="https://sillylittlethings.co.uk/images/2.mp4" type="video/mp4">
-        </video>
-        <video controls class="small-video">
-          <source src="https://sillylittlethings.co.uk/images/9.mp4" type="video/mp4">
-        </video>
-      </div>
-    </section>
-    
-    <section class="dynamic-content">
-      <!-- Dynamic content can go here -->
-    </section>
-  </main>
+  <div class="balloon" id="balloon">
+    <span>Amy &amp; Harry</span>
+  </div>
+  <div id="message">Congratulations!</div>
+  <div id="from-message">Love from Jim &amp; Lauren</div>
 
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> |  The Jim Ross | All Rights Reserved</p>
-      <!-- Date and Time beneath the footer text -->
-      <p id="current-date-time" class="date-time"></p>
-    </div>
-  </footer>
-
-  <!-- JavaScript to display the current date and time once -->
   <script>
-    function displayDateTime() {
-      const now = new Date();
-      const dateOptions = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      };
-      const timeOptions = { 
-        hour: '2-digit', 
-        minute: '2-digit', 
-        second: '2-digit'
-      };
-      const formattedDate = now.toLocaleDateString('en-US', dateOptions);
-      const formattedTime = now.toLocaleTimeString('en-US', timeOptions);
-      document.getElementById('current-date-time').innerHTML = `${formattedDate}, ${formattedTime}`;
+    const balloon       = document.getElementById('balloon');
+    const messageEl     = document.getElementById('message');
+    const fromEl        = document.getElementById('from-message');
+    const confettiCount = 40;
+    const colors        = ['#ff69b4','#ffc0cb','#1e90ff','#87cefa'];
+
+    function random(min, max){ return Math.random()*(max-min)+min; }
+
+    function createSpans(text, baseDelay) {
+      return text.split('').map((ch, i) => {
+        const delay = (baseDelay + i*0.1).toFixed(2) + 's';
+        if (ch === ' ') return `<span class="letter" style="animation-delay:${delay}">&nbsp;</span>`;
+        return `<span class="letter" style="animation-delay:${delay}">${ch}</span>`;
+      }).join('');
     }
-    displayDateTime();
+
+    balloon.addEventListener('click', () => {
+      // 1) pop the balloon
+      balloon.classList.add('pop');
+      balloon.style.pointerEvents = 'none';
+
+      // hide floating clouds
+      document.querySelectorAll('.cloud').forEach(c => c.style.opacity = 0);
+
+      // 2) confetti
+      for (let i = 0; i < confettiCount; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti';
+        piece.style.background = colors[Math.floor(random(0, colors.length))];
+        piece.style.left = 'calc(50% - 4px)';
+        piece.style.top  = 'calc(50% - 8px)';
+        const angle    = random(0, 2 * Math.PI);
+        const dist     = random(100, 300);
+        piece.style.setProperty('--dx', Math.cos(angle)*dist + 'px');
+        piece.style.setProperty('--dy', Math.sin(angle)*dist + 'px');
+        piece.style.setProperty('--rot', random(180,720) + 'deg');
+        piece.style.animation = `fly ${random(0.8,1.5)}s ease-out ${random(0,0.2)}s forwards`;
+        document.body.appendChild(piece);
+        piece.addEventListener('animationend', () => piece.remove());
+      }
+
+      // 3) animate congratulations message letters
+      messageEl.innerHTML = createSpans(messageEl.textContent.trim(), 0.3);
+      messageEl.classList.add('show');
+
+      // 4) after 1 second, animate "Love from Jim & Lauren"
+      setTimeout(() => {
+        fromEl.innerHTML = createSpans(fromEl.textContent.trim(), 0.3);
+        fromEl.classList.add('show');
+      }, 1000);
+    });
   </script>
-  
-  <!-- Link to external JavaScript file -->
-  <script src="js/script.js"></script>
 </body>
 </html>

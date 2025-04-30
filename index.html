@@ -94,7 +94,7 @@
       100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(var(--rot)); }
     }
 
-    /* CONGRATS MESSAGE */
+    /* CONGRATS & FROM MESSAGES */
     #message, #from-message {
       position: absolute;
       left: 50%;
@@ -138,6 +138,9 @@
   <div class="cloud" style="top: 25%; animation-duration: 30s;"></div>
   <div class="cloud" style="top: 15%; animation-duration: 20s;"></div>
 
+  <!-- audio pop sound: place pop.mp3 alongside this HTML -->
+  <audio id="pop-sound" src="pop.mp3" preload="auto"></audio>
+
   <div class="balloon" id="balloon">
     <span>Amy &amp; Harry</span>
   </div>
@@ -146,6 +149,7 @@
 
   <script>
     const balloon       = document.getElementById('balloon');
+    const popSound      = document.getElementById('pop-sound');
     const messageEl     = document.getElementById('message');
     const fromEl        = document.getElementById('from-message');
     const confettiCount = 40;
@@ -162,6 +166,10 @@
     }
 
     balloon.addEventListener('click', () => {
+      // 0) play pop sound
+      popSound.currentTime = 0;
+      popSound.play();
+
       // 1) pop the balloon
       balloon.classList.add('pop');
       balloon.style.pointerEvents = 'none';

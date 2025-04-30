@@ -37,7 +37,8 @@
     /* BALLOON */
     .balloon {
       position: relative;
-      width: 140px; height: 180px;
+      width: clamp(200px, 80vw, 400px);
+      aspect-ratio: 140 / 180;
       background: #ff69b4;
       border-radius: 60% 60% 50% 50%;
       cursor: pointer;
@@ -48,8 +49,8 @@
     .balloon:after {
       content: '';
       position: absolute;
-      bottom: -50px; left: 50%;
-      width: 4px; height: 50px;
+      bottom: -25%; left: 50%;
+      width: 2%; height: 25%;
       background: #555;
       transform: translateX(-50%);
     }
@@ -59,7 +60,7 @@
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       font-family: 'Great Vibes', cursive;
-      font-size: 1.4em;
+      font-size: clamp(1.8rem, 8vw, 2.5rem);
       color: #fff;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
       pointer-events: none;
@@ -106,11 +107,11 @@
     }
     #message {
       top: 45%;
-      font-size: 4em;
+      font-size: clamp(2.5rem, 10vw, 6rem);
     }
     #from-message {
       top: 60%;
-      font-size: 2em;
+      font-size: clamp(1.5rem, 6vw, 3rem);
     }
     #message.show, #from-message.show {
       transition: opacity 0.2s ease-out;

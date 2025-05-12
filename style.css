@@ -15,7 +15,7 @@
   --clr-light:      #393E46;
   --clr-primary:    #00ADB5; /* Blue/Teal */
   --clr-secondary:  #ff8000; /* Orange */
-  --clr-accent:     #00ADB5; /* Same as primary, used for nav/title hovers */
+  --clr-accent:     #00ADB5; /* Same as primary, used for nav/title hovers and text glaze */
   --clr-text:       #EEEEEE;
   --transition:     0.3s ease;
   --gradient-border-padding: 0.75rem; /* Define padding for gradient border */
@@ -87,11 +87,28 @@ header .site-title {
 }
 
 header .site-title a {
-  color: var(--clr-secondary); 
+  /* color: var(--clr-secondary); Base colour is now handled by the gradient */
   text-decoration: none;
-  position: relative;
+  position: relative; 
+  display: inline-block; 
+
+  /* Text glaze effect */
+  background-image: linear-gradient(
+    90deg, 
+    var(--clr-secondary) 0%, 
+    var(--clr-secondary) 35%, 
+    var(--clr-accent) 50%, /* Blue glaze */
+    var(--clr-secondary) 65%, 
+    var(--clr-secondary) 100%
+  );
+  background-size: 300% auto; /* Make gradient wider than text for sweep */
+  color: transparent; /* Text itself is transparent */
+  -webkit-background-clip: text; /* Clip background to text shape */
+  background-clip: text;
+  animation: textGlazeSweep 6s linear infinite;
 }
-header .site-title a::after { 
+
+header .site-title a::after { /* Underline effect */
   content: '';
   position: absolute;
   width: 0%;
@@ -101,13 +118,17 @@ header .site-title a::after {
   background-color: var(--clr-primary); 
   transition: width var(--transition);
 }
+
 header .site-title a:hover {
-  color: var(--clr-accent); 
+  /* On hover, we want solid text colour, so remove glaze animation and set solid colour */
+  animation: none; /* Stop glaze animation */
+  background-image: none; /* Remove gradient background */
+  color: var(--clr-accent); /* Set text to hover colour (blue/teal) */
 }
+
 header .site-title a:hover::after {
   width: 100%;
 }
-
 
 /* Hamburger Menu Button */
 .mobile-nav-toggle {
@@ -221,16 +242,15 @@ main section p:last-child {
 }
 
 
-h2 { /* This is the <h2> tag itself */
+h2 { 
   font-size: 2rem;
-  color: var(--clr-accent); /* Default colour for non-linked h2s */
+  color: var(--clr-accent); 
   margin-bottom: 1rem;
   text-align: left; 
 }
 
-/* Styling for section title links (e.g., <h2><a class="section-title-link">Projects</a></h2>) */
 .section-title-link {
-  color: var(--clr-accent); /* Initial colour (blue/teal) */
+  color: var(--clr-accent); 
   text-decoration: none;
   position: relative; 
   display: inline-block; 
@@ -244,16 +264,16 @@ h2 { /* This is the <h2> tag itself */
   height: 2px; 
   bottom: -4px; 
   left: 0;
-  background-color: var(--clr-secondary); /* Underline colour (orange) */
+  background-color: var(--clr-secondary); 
   transition: width var(--transition);
 }
 
 .section-title-link:hover {
-  color: var(--clr-secondary); /* Text turns orange on hover */
+  color: var(--clr-secondary); 
 }
 
 .section-title-link:hover::after {
-  width: 100%; /* Underline expands on hover */
+  width: 100%; 
 }
 
 
@@ -268,6 +288,16 @@ h2 { /* This is the <h2> tag itself */
 /* Keyframes for spinning gradient using the custom property --gradient-angle */
 @keyframes spinHoudiniGradient {
   to { --gradient-angle: 360deg; }
+}
+
+/* Keyframes for constant text glaze sweep on site title */
+@keyframes textGlazeSweep {
+  0% {
+    background-position: 200% center; /* Start with glaze off-screen right */
+  }
+  100% {
+    background-position: -100% center; /* End with glaze off-screen left */
+  }
 }
 
 
@@ -340,10 +370,9 @@ main a {
   transition: color var(--transition); 
 }
 main a:hover {
-  color: var(--clr-secondary); /* General main links will hover to orange */
+  color: var(--clr-secondary); 
 }
 
-/* Ensure header nav links and site title don't get general main link underline */
 header .primary-navigation .nav-link, header .site-title a { 
   text-decoration: none;
 }
@@ -743,9 +772,7 @@ header .site-title a:focus,
 
 /* Responsive adjustments for project details */
 @media (max-width: 768px) {
-  .project-detail-content {
-  }
-  .project-image {
+   .project-image {
     max-width: 100%; 
     margin-bottom: 1.5rem;
   }
@@ -819,124 +846,3 @@ header .site-title a:focus,
   padding-bottom: 2rem;
 }
 #embedded-site-section h2 { text-align: left; }
-
-#embedded-site-section .page-intro,
-#embedded-site-section .page-note {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  text-align: left; 
-  max-width: 800px;
-  margin-left: 0; 
-  margin-right: 0; 
-}
-
-#embedded-site-section .page-note {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  margin-top: 1.5rem;
-}
-
-.iframe-container {
-  position: relative;
-  width: 100%;
-  height: 85vh; 
-  overflow: hidden;
-  border-radius: 12px; 
-  background-color: var(--clr-light); 
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.iframe-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0; 
-  border-radius: 12px; 
-}
-
-/* CSS for Modal Image Links */
-.modal-image-link {
-  display: inline-block; 
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-}
-
-.modal-image-link:hover .modal-selfie { 
-  opacity: 0.85;
-}
-
-/* Styles for the Contact Details page */
-#contact-details {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-}
-
-#contact-details h2 { 
-  text-align: left;
-  margin-bottom: 1.5rem; 
-}
-
-#contact-details .page-intro {
-  text-align: left;
-  margin-bottom: 2.5rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  max-width: 800px; 
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.contact-methods {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-
-.contact-method {
-  background-color: var(--clr-light);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.contact-method h3 {
-  color: var(--clr-primary);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.contact-method p {
-  text-align: left;
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
-
-.contact-link {
-  display: inline-block;
-  color: var(--clr-primary); 
-  background-color: transparent; 
-  padding: 0.5rem 1rem; 
-  border: 1px solid var(--clr-primary); 
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color var(--transition), color var(--transition), transform var(--transition); 
-}
-
-.contact-link:hover {
-  background-color: var(--clr-primary); 
-  color: var(--clr-background); 
-}
-
-#contact-details .contact-note {
-  text-align: center; 
-  margin-top: 2rem;
-  font-style: italic;
-  opacity: 0.9;
-}

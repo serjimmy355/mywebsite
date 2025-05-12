@@ -937,3 +937,19 @@ header .site-title a:focus,
   font-style: italic;
   opacity: 0.9;
 }
+.contact-link {
+  display: inline-block;
+  color: var(--clr-primary); 
+  background-color: transparent; 
+  padding: 0.5rem 1rem; 
+  border: 1px solid var(--clr-primary); 
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color var(--transition), color var(--transition), transform var(--transition); 
+}
+
+.contact-link:hover {
+  background-color: var(--clr-primary); 
+  color: var(--clr-background); 
+}

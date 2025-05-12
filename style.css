@@ -15,7 +15,7 @@
   --clr-light:      #393E46;
   --clr-primary:    #00ADB5; /* Blue/Teal */
   --clr-secondary:  #ff8000; /* Orange */
-  --clr-accent:     #00ADB5; /* Same as primary, used for hovers */
+  --clr-accent:     #00ADB5; /* Same as primary, used for nav/title hovers */
   --clr-text:       #EEEEEE;
   --transition:     0.3s ease;
   --gradient-border-padding: 0.75rem; /* Define padding for gradient border */
@@ -32,7 +32,7 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden; /* ADDED: Further prevent horizontal scroll */
+  overflow-x: hidden; 
 }
 
 body {
@@ -42,7 +42,7 @@ body {
   color: var(--clr-text); 
   line-height: 1.6;
   transition: background var(--transition), color var(--transition); 
-  overflow-x: hidden; /* Keep this as well, good practice */
+  overflow-x: hidden; 
 }
 
 /* Header */
@@ -221,18 +221,20 @@ main section p:last-child {
 }
 
 
-h2 {
+h2 { /* This is the <h2> tag itself */
   font-size: 2rem;
-  color: var(--clr-accent); 
+  color: var(--clr-accent); /* Default colour for non-linked h2s */
   margin-bottom: 1rem;
   text-align: left; 
 }
 
+/* Styling for section title links (e.g., <h2><a class="section-title-link">Projects</a></h2>) */
 .section-title-link {
-  color: var(--clr-primary); 
+  color: var(--clr-accent); /* Initial colour (blue/teal) */
   text-decoration: none;
   position: relative; 
   display: inline-block; 
+  transition: color var(--transition); 
 }
 
 .section-title-link::after {
@@ -242,16 +244,16 @@ h2 {
   height: 2px; 
   bottom: -4px; 
   left: 0;
-  background-color: var(--clr-secondary); 
+  background-color: var(--clr-secondary); /* Underline colour (orange) */
   transition: width var(--transition);
 }
 
 .section-title-link:hover {
-  color: var(--clr-secondary); 
+  color: var(--clr-secondary); /* Text turns orange on hover */
 }
 
 .section-title-link:hover::after {
-  width: 100%; 
+  width: 100%; /* Underline expands on hover */
 }
 
 
@@ -338,9 +340,10 @@ main a {
   transition: color var(--transition); 
 }
 main a:hover {
-  color: var(--clr-accent); 
+  color: var(--clr-secondary); /* General main links will hover to orange */
 }
 
+/* Ensure header nav links and site title don't get general main link underline */
 header .primary-navigation .nav-link, header .site-title a { 
   text-decoration: none;
 }
@@ -720,7 +723,7 @@ header .site-title a:focus,
   text-align: left; 
 }
 
-.project-links a { /* This is the style for "Visit Live App" button */
+.project-links a { 
   color: var(--clr-primary); 
   text-decoration: none;
   font-weight: 600;
@@ -936,20 +939,4 @@ header .site-title a:focus,
   margin-top: 2rem;
   font-style: italic;
   opacity: 0.9;
-}
-.contact-link {
-  display: inline-block;
-  color: var(--clr-primary); 
-  background-color: transparent; 
-  padding: 0.5rem 1rem; 
-  border: 1px solid var(--clr-primary); 
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color var(--transition), color var(--transition), transform var(--transition); 
-}
-
-.contact-link:hover {
-  background-color: var(--clr-primary); 
-  color: var(--clr-background); 
 }

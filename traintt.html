@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Train Times | Jim Ross</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" aria-label="Homepage" class="logo-link">
+      <img src="bird.png" alt="Logo" class="Logo">
+    </a>
+    <h1 class="site-title"><a href="index.html">Jim Ross</a></h1>
+
+    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+      <span class="sr-only">Menu</span>
+      <span class="hamburger-line line1"></span>
+      <span class="hamburger-line line2"></span>
+      <span class="hamburger-line line3"></span>
+    </button>
+
+    <nav id="primary-navigation" class="primary-navigation" data-visible="false">
+      <a href="aboutme.html" class="nav-link about-link"><span class="link-text">About</span></a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="music.html" class="nav-link">Music</a>
+      <a href="traintt.html" class="nav-link active-nav-link">Train Times</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="embedded-site-section">
+      <h2>Embedded Site: tt.thejimross.com</h2>
+      <p class="page-intro">
+        Displaying content from an external website. Please note that functionality and appearance are controlled by the external site.
+      </p>
+
+      <div class="iframe-container">
+        <iframe 
+          src="https://tt.thejimross.com" 
+          title="Embedded content from tt.thejimross.com"
+          frameborder="0" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="page-note">
+        <strong>Note:</strong> If this section is blank or shows an error, the website tt.thejimross.com may not allow itself to be embedded in iframes on other domains due to its security settings (e.g., X-Frame-Options or Content-Security-Policy headers).
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Jim Ross
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

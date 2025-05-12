@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-GB"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Jim Ross</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" aria-label="Homepage" class="logo-link">
+      <img src="bird.png" alt="Logo" class="Logo">
+    </a>
+    <h1 class="site-title"><a href="index.html">Jim Ross</a></h1>
+
+    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+      <span class="sr-only">Menu</span>
+      <span class="hamburger-line line1"></span>
+      <span class="hamburger-line line2"></span>
+      <span class="hamburger-line line3"></span>
+    </button>
+
+    <nav id="primary-navigation" class="primary-navigation" data-visible="false">
+      <a href="aboutme.html" class="nav-link about-link">
+        <span class="link-text">About</span>
+      </a>
+      <a href="projects.html" class="nav-link active-nav-link">Projects</a>
+      <a href="music.html" class="nav-link">Music</a>
+      <a href="traintt.html" class="nav-link">Train Times</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="project-showcase">
+      <h2>My Projects</h2>
+      <p class="page-intro">Here you can find more details about some of the projects I've worked on. Click on any project to learn more about its objectives, the technologies used, and my role in its development.</p>
+
+      <article class="project-detail" id="train-timetable-project">
+        <div class="project-detail-header">
+          <h3>Train Timetable</h3>
+          <div class="project-meta">
+            <span><strong>Status:</strong>Completed</span>
+            <span><strong>Category:</strong> Personal Tool</span>
+          </div>
+        </div>
+        <div class="project-detail-content">
+          <a href="https://tt.thejimross.com" target="_blank" rel="noopener noreferrer" class="project-image-link">
+            <img src="tt.png" alt="Train Timetable Project Screenshot" class="project-image">
+          </a>
+          <div class="project-description">
+            <p>This was my first project ended up in me building a PWA that I could use to easily find live train times when travelling to and from university.</p>
+            <p>I initially started this with the thought that it would be a simple project, simply linking a webpage to an API and then visiting a bookmarked webpage. I soon realised that this wasn't quite what I needed and with the help of AI it appeared that I would need to build a PWA using Python.</p>
+             <p>You can view the live application by clicking the image or visiting <a href="https://tt.thejimross.com" target="_blank" rel="noopener noreferrer">tt.thejimross.com</a>.</p>
+          </div>
+        </div>
+        <div class="project-links">
+           <a href="https://tt.thejimross.com" target="_blank" rel="noopener noreferrer">Visit Live App</a>
+        </div>
+      </article>
+
+      <article class="project-detail" id="home-drive-project"> 
+        <div class="project-detail-header">
+          <h3>Home File Server</h3>
+          <div class="project-meta">
+            <span><strong>Status:</strong> Completed</span>
+            <span><strong>Category:</strong> Web Application</span>
+          </div>
+        </div>
+        <div class="project-detail-content">
+          <img src="nc.png" alt="Home File Server Project Image" class="project-image"> 
+          <div class="project-description">
+            <p>This project initially was to build a server to store personal files that I could access over the internet.</p> 
+            <p>Shortly after getting this up and running I wondered if it was possible to integrate an office suite so I could edit files online for convenience. After researching I found that OnlyOffice was a suitable choice for this as there was a lot of documentation online and with it being open source, it wouldn't cost me anything.</p> 
+          </div>
+        </div>
+        <div class="project-links">
+        </div>
+      </article>
+
+      <article class="project-detail" id="portfolio-v1-project">
+        <div class="project-detail-header">
+          <h3>Portfolio Website V1</h3>
+          <div class="project-meta">
+            <span><strong>Status:</strong> Completed (2024)</span>
+            <span><strong>Category:</strong> Personal Portfolio</span>
+            <span><strong>Technologies:</strong> HTML, CSS, JavaScript</span>
+          </div>
+        </div>
+        <div class="project-detail-content">
+          <div class="project-description">
+            <p>The very website you are browsing now represents my first major iteration of a personal portfolio. The primary goal was to create a clean, responsive, and accessible platform to showcase my skills, projects, and journey into the IT industry.</p>
+            <h4>Key Features:</h4>
+            <ul>
+              <li>Responsive design adapting to desktop, tablet, and mobile screens.</li>
+              <li>Interactive modal windows for quick project overviews.</li>
+              <li>Multi-page structure for detailed "About Me" and "Projects" sections.</li>
+              <li>Custom CSS styling with a consistent colour scheme and typography.</li>
+              <li>JavaScript for dynamic functionalities like modal pop-ups.</li>
+            </ul>
+            <p>This project was an excellent learning experience in front-end development, from initial design concepts to final deployment. It allowed me to solidify my understanding of HTML structure, CSS layout techniques (including Flexbox and Grid), and JavaScript DOM manipulation.</p>
+          </div>
+        </div>
+         <div class="project-links">
+        </div>
+       </article>
+
+      </section>
+  </main>
+
+  <footer>
+    © 2025 Jim Ross
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

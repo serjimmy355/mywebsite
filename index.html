@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jim Ross</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="bird.png" type="image/png">
+  <link rel="apple-touch-icon" href="bird.png">
+</head>
+<body>
+  <header>
+    <a href="index.html" aria-label="Homepage" class="logo-link">
+      <img src="bird.png" alt="Logo" class="Logo">
+    </a>
+    <h1 class="site-title"><a href="index.html">Jim Ross</a></h1>
+
+    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+      <span class="sr-only">Menu</span>
+      <span class="hamburger-line line1"></span>
+      <span class="hamburger-line line2"></span>
+      <span class="hamburger-line line3"></span>
+    </button>
+
+    <nav id="primary-navigation" class="primary-navigation" data-visible="false">
+      <a href="aboutme.html" class="nav-link about-link"><span class="link-text">About</span></a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="music.html" class="nav-link">Music</a>
+      <a href="traintt.html" class="nav-link">Train Times</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>Welcome!</h2>
+      <p>
+        Welcome to my corner of the web! I'm Jim Ross, an IT technician at a Multi-Academy Trust. I'm currently studying a Digital and Technology Solutions Degree apprenticeship and I'm keen to learn new skills.
+        (To learn more, please visit my <a href="aboutme.html">About Me page</a>.)
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2> 
+      <div class="projects">
+        <div class="project" data-modal-target="#project1-modal">
+          <h3>Train Timetable</h3>
+        </div>
+        <div class="project" data-modal-target="#project2-modal">
+          <h3>Home Drive</h3> 
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Feel free to <a href="mailto:jimross355@gmail.com">email me</a> or
+        connect on
+        <a href="https://www.linkedin.com/in/jim-ross-397719276/" target="_blank">
+          LinkedIn
+        </a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Jim Ross
+  </footer>
+
+  <div class="modal" id="about-modal" aria-hidden="true" role="dialog" aria-labelledby="about-modal-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-content" role="document">
+      <div class="modal-header">
+        <h2 id="about-modal-title">About Me Snapshot</h2>
+        <button class="close" aria-label="Close modal" data-close-modal>×</button>
+      </div>
+      <div class="modal-body">
+        <img src="selfie.jpg" alt="Your selfie" class="modal-selfie">
+        <p>
+          This is a brief snapshot. For more details, please see my full <a href="aboutme.html">About Me page</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="project1-modal" aria-hidden="true" role="dialog" aria-labelledby="project1-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-content" role="document">
+      <div class="modal-header">
+        <h2 id="project1-title">Train Timetable</h2> 
+        <button class="close" aria-label="Close modal" data-close-modal>×</button>
+      </div>
+      <div class="modal-body">
+        <a href="https://tt.thejimross.com" target="_blank" rel="noopener noreferrer" class="modal-image-link">
+          <img src="tt.png" alt="Train Timetable Screenshot" class="modal-selfie"> 
+        </a>
+        <p>
+          This application provides live train timetable information. It was developed to help with planning university travel.
+        </p>
+        <p>
+          For more details, please visit the <a href="projects.html#project-showcase">Projects page</a> or click the image to visit the live app.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="project2-modal" aria-hidden="true" role="dialog" aria-labelledby="project2-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-content" role="document">
+      <div class="modal-header">
+        <h2 id="project2-title">Home Drive</h2> 
+        <button class="close" aria-label="Close modal" data-close-modal>×</button>
+      </div>
+      <div class="modal-body">
+        <a href="projects.html#home-drive-project" class="modal-image-link">
+          <img src="nc.png" alt="Home File Server Icon" class="modal-selfie">
+        </a>
+        <p>
+          A personal file server for remote access and online document editing using OnlyOffice.
+        </p>
+        <p>
+          For more details, click the image or visit the <a href="projects.html#home-drive-project">Projects page</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

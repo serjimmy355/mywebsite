@@ -32,6 +32,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden; /* ADDED: Further prevent horizontal scroll */
 }
 
 body {
@@ -41,7 +42,7 @@ body {
   color: var(--clr-text); 
   line-height: 1.6;
   transition: background var(--transition), color var(--transition); 
-  overflow-x: hidden; /* ADDED: Prevent horizontal scroll from off-canvas elements */
+  overflow-x: hidden; /* Keep this as well, good practice */
 }
 
 /* Header */
@@ -211,7 +212,6 @@ section {
   opacity: 1;
 }
 
-/* Paragraphs within sections in main will default to left-align */
 main section p {
   text-align: left; 
   margin-bottom: 1rem; 
@@ -227,6 +227,33 @@ h2 {
   margin-bottom: 1rem;
   text-align: left; 
 }
+
+.section-title-link {
+  color: var(--clr-primary); 
+  text-decoration: none;
+  position: relative; 
+  display: inline-block; 
+}
+
+.section-title-link::after {
+  content: '';
+  position: absolute;
+  width: 0%; 
+  height: 2px; 
+  bottom: -4px; 
+  left: 0;
+  background-color: var(--clr-secondary); 
+  transition: width var(--transition);
+}
+
+.section-title-link:hover {
+  color: var(--clr-secondary); 
+}
+
+.section-title-link:hover::after {
+  width: 100%; 
+}
+
 
 /* Keyframes for the visor sweep effect on project cards */
 @keyframes visorSweepEffect {
@@ -453,7 +480,8 @@ footer {
 .primary-navigation .nav-link:focus, 
 .project:focus,
 .modal .close:focus,
-header .site-title a:focus { 
+header .site-title a:focus,
+.section-title-link:focus { 
   outline: 2px dashed var(--clr-accent);
   outline-offset: 3px; 
 }
@@ -692,7 +720,7 @@ header .site-title a:focus {
   text-align: left; 
 }
 
-.project-links a {
+.project-links a { /* This is the style for "Visit Live App" button */
   color: var(--clr-primary); 
   text-decoration: none;
   font-weight: 600;
@@ -836,4 +864,76 @@ header .site-title a:focus {
 
 .modal-image-link:hover .modal-selfie { 
   opacity: 0.85;
+}
+
+/* Styles for the Contact Details page */
+#contact-details {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+#contact-details h2 { 
+  text-align: left;
+  margin-bottom: 1.5rem; 
+}
+
+#contact-details .page-intro {
+  text-align: left;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 800px; 
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.contact-method {
+  background-color: var(--clr-light);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.contact-method h3 {
+  color: var(--clr-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.contact-method p {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.contact-link {
+  display: inline-block;
+  color: var(--clr-primary); 
+  background-color: transparent; 
+  padding: 0.5rem 1rem; 
+  border: 1px solid var(--clr-primary); 
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color var(--transition), color var(--transition), transform var(--transition); 
+}
+
+.contact-link:hover {
+  background-color: var(--clr-primary); 
+  color: var(--clr-background); 
+}
+
+#contact-details .contact-note {
+  text-align: center; 
+  margin-top: 2rem;
+  font-style: italic;
+  opacity: 0.9;
 }

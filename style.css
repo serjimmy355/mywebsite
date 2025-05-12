@@ -41,6 +41,7 @@ body {
   color: var(--clr-text); 
   line-height: 1.6;
   transition: background var(--transition), color var(--transition); 
+  overflow-x: hidden; /* ADDED: Prevent horizontal scroll from off-canvas elements */
 }
 
 /* Header */
@@ -212,8 +213,8 @@ section {
 
 /* Paragraphs within sections in main will default to left-align */
 main section p {
-  text-align: left; /* Ensures paragraphs in main sections are left-aligned by default */
-  margin-bottom: 1rem; /* Default bottom margin for paragraphs */
+  text-align: left; 
+  margin-bottom: 1rem; 
 }
 main section p:last-child {
   margin-bottom: 0;
@@ -224,7 +225,7 @@ h2 {
   font-size: 2rem;
   color: var(--clr-accent); 
   margin-bottom: 1rem;
-  text-align: left; /* Ensure headings are also left-aligned for consistency */
+  text-align: left; 
 }
 
 /* Keyframes for the visor sweep effect on project cards */
@@ -259,7 +260,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center; /* Project card content itself can be centered */
+  text-align: center; 
   min-height: 120px;
   position: relative; 
   overflow: hidden; 
@@ -300,7 +301,7 @@ h2 {
   font-size: 1.25rem;
   position: relative; 
   z-index: 2; 
-  text-align: center; /* Ensure project titles within cards remain centered */
+  text-align: center; 
 }
 
 /* General Links in text */
@@ -333,8 +334,8 @@ footer {
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
-#about-me-details h2 { text-align: left; } /* Ensure h2 on this page is left */
-#about-me-details p { text-align: left; } /* Ensure paragraphs on this page are left */
+#about-me-details h2 { text-align: left; } 
+#about-me-details p { text-align: left; } 
 
 
 .about-content {
@@ -356,14 +357,14 @@ footer {
   color: var(--clr-primary); 
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  text-align: left; /* Ensure h3 on this page is left */
+  text-align: left; 
 }
 
 .about-text ul {
   list-style-position: outside;
   padding-left: 1.5rem;
   margin-bottom: 1rem;
-  text-align: left; /* Ensure list items are left-aligned */
+  text-align: left; 
 }
 
 .about-text ul li {
@@ -509,7 +510,7 @@ header .site-title a:focus {
   padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: center; /* Modal header titles can remain centred */
+  justify-content: center; 
   font-weight: 600;
   position: relative;
   border-bottom: 1px solid var(--clr-light);
@@ -537,13 +538,13 @@ header .site-title a:focus {
   max-height: 70vh;
   overflow-y: auto;
   color: var(--clr-text); 
-  text-align: center; /* Modal body content can be centred by default */
+  text-align: center; 
 }
-.modal-body p { /* Paragraphs in modals can also be centred if desired, or left */
+.modal-body p { 
   line-height: 1.7;
   max-width: 400px;
   margin: 0 auto 1.25rem;
-  text-align: left; /* Explicitly set modal paragraphs to left for consistency */
+  text-align: left; 
 }
 .modal-body p:last-of-type {
   margin-bottom: 0;
@@ -587,10 +588,10 @@ header .site-title a:focus {
   margin-bottom: 2.5rem;
   font-size: 1.1rem;
   line-height: 1.7;
-  text-align: left; /* UPDATED */
+  text-align: left; 
   max-width: 800px;
-  margin-left: 0; /* UPDATED from auto for left alignment */
-  margin-right: 0; /* UPDATED from auto for left alignment */
+  margin-left: 0; 
+  margin-right: 0; 
   color: var(--clr-text); 
 }
 
@@ -612,26 +613,26 @@ header .site-title a:focus {
   border-bottom: 1px solid var(--clr-background);
   padding-bottom: 1rem;
   margin-bottom: 1.5rem;
-  text-align: left; /* Ensure header content is left aligned */
+  text-align: left; 
 }
 
 .project-detail-header h3 {
   color: var(--clr-primary); 
   font-size: 1.75rem;
   margin: 0 0 0.5rem 0;
-  text-align: left; /* Ensure project titles are left aligned */
+  text-align: left; 
 }
 
 .project-meta {
   font-size: 0.9rem;
   color: var(--clr-text); 
   opacity: 0.8;
-  text-align: left; /* Ensure meta info is left aligned */
+  text-align: left; 
 }
 
 .project-meta span {
   margin-right: 1rem;
-  display: block; /* Make spans block for better alignment on new lines */
+  display: block; 
   margin-bottom: 0.25rem;
 }
 
@@ -644,7 +645,7 @@ header .site-title a:focus {
   flex-wrap: wrap;
   gap: 2rem;
   align-items: flex-start;
-  text-align: left; /* Ensure content within is left aligned */
+  text-align: left; 
 }
 
 .project-image {
@@ -654,18 +655,17 @@ header .site-title a:focus {
   height: auto;
   border-radius: 8px;
   object-fit: cover;
-  /* align-self: center; Removed to allow natural left flow */
 }
 
 .project-description {
   flex: 2;
   min-width: 300px;
-  text-align: left; /* Ensure description text is left aligned */
+  text-align: left; 
 }
 .project-description p,
 .project-description ul,
 .project-description li {
-  text-align: left; /* Ensure these are left aligned */
+  text-align: left; 
 }
 
 .project-description h4 {
@@ -673,7 +673,7 @@ header .site-title a:focus {
   margin-top: 1rem;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
-  text-align: left; /* Ensure h4 is left aligned */
+  text-align: left; 
 }
 
 .project-description ul {
@@ -689,7 +689,7 @@ header .site-title a:focus {
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px solid var(--clr-background);
-  text-align: left; /* Changed from right */
+  text-align: left; 
 }
 
 .project-links a {
@@ -699,7 +699,7 @@ header .site-title a:focus {
   padding: 0.5rem 1rem;
   border: 1px solid var(--clr-primary);
   border-radius: 6px;
-  margin-right: 1rem; /* Changed from margin-left for left alignment */
+  margin-right: 1rem; 
   margin-left: 0;
   transition: background-color var(--transition), color var(--transition); 
 }
@@ -713,19 +713,16 @@ header .site-title a:focus {
 /* Responsive adjustments for project details */
 @media (max-width: 768px) {
   .project-detail-content {
-    /* flex-direction: column; */ /* Already column, but ensure text is left */
-    /* align-items: center; */ /* Remove to allow left alignment */
   }
   .project-image {
-    max-width: 100%; /* Allow image to take full width in stacked view */
+    max-width: 100%; 
     margin-bottom: 1.5rem;
   }
   .project-links {
-    text-align: left; /* Ensure links are left-aligned on mobile too */
+    text-align: left; 
   }
   .project-links a {
-    /* display: inline-block; */ /* Already inline-block from base style */
-    margin: 0.5rem 0.5rem 0.5rem 0; /* Adjust margin for left alignment */
+    margin: 0.5rem 0.5rem 0.5rem 0; 
   }
 }
 
@@ -740,10 +737,10 @@ header .site-title a:focus {
   margin-bottom: 2.5rem;
   font-size: 1.1rem;
   line-height: 1.7;
-  text-align: left; /* UPDATED */
+  text-align: left; 
   max-width: 800px;
-  margin-left: 0; /* UPDATED */
-  margin-right: 0; /* UPDATED */
+  margin-left: 0; 
+  margin-right: 0; 
 }
 
 .playlist-grid {
@@ -767,13 +764,13 @@ header .site-title a:focus {
 
 #spotify-playlists .page-note {
   margin-top: 1.5rem;
-  text-align: left; /* UPDATED */
+  text-align: left; 
   font-size: 0.9rem;
   color: var(--clr-text); 
   opacity: 0.8;
   max-width: 800px;
-  margin-left: 0; /* UPDATED */
-  margin-right: 0; /* UPDATED */
+  margin-left: 0; 
+  margin-right: 0; 
 }
 
 @media (max-width: 640px) { 
@@ -797,10 +794,10 @@ header .site-title a:focus {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   line-height: 1.7;
-  text-align: left; /* UPDATED */
+  text-align: left; 
   max-width: 800px;
-  margin-left: 0; /* UPDATED */
-  margin-right: 0; /* UPDATED */
+  margin-left: 0; 
+  margin-right: 0; 
 }
 
 #embedded-site-section .page-note {
@@ -829,7 +826,7 @@ header .site-title a:focus {
   border-radius: 12px; 
 }
 
-/* CSS for Modal Image Links (Optional Addition to style.css) */
+/* CSS for Modal Image Links */
 .modal-image-link {
   display: inline-block; 
   text-decoration: none;

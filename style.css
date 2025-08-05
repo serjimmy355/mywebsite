@@ -857,4 +857,11 @@ body {
 main {
   flex-grow: 1; /* Allow the main content to take up available vertical space */
 }
+/* anywhere in style.css */
+.project-image--phone {
+  max-width: 200px;   /* whatever size you want */
+  height: auto;       /* preserve aspect ratio */
+  display: block;     /* if you need it to sit on its own line */
+  margin: 1em 0;      /* optional spacing */
+}
 

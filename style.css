@@ -719,6 +719,13 @@ header .site-title a:focus,
   object-fit: cover;
 }
 
+.project-image--phone {
+  max-width: 300px;
+  min-width: 200px;
+  margin: 1rem auto;
+  display: block;
+}
+
 .project-description {
   flex: 2;
   min-width: 300px;

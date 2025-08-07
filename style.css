@@ -10,14 +10,16 @@
   inherits: false; /* Does not inherit from parent elements */
 }
 
+/* Map existing color variables to the new consistent color scheme */
 :root {
-  --clr-background: #222831;
-  --clr-light:      #393E46;
-  --clr-primary:    #00ADB5; /* Blue/Teal */
-  --clr-secondary:  #ff8000; /* Orange */
-  --clr-accent:     #00ADB5; /* Same as primary, used for nav/title hovers and text glaze */
-  --clr-text:       #EEEEEE;
-  --transition:     0.3s ease;
+  /* Use the colors.css variables for consistency */
+  --clr-background: var(--bg-primary);
+  --clr-light:      var(--bg-secondary);
+  --clr-primary:    var(--accent-blue); /* Blue/Teal */
+  --clr-secondary:  var(--brand-orange); /* Orange - now using consistent variable */
+  --clr-accent:     var(--accent-blue); /* Same as primary, used for nav/title hovers and text glaze */
+  --clr-text:       var(--text-primary);
+  --transition:     var(--transition-normal);
   --gradient-border-padding: 0.75rem; /* Define padding for gradient border */
 }
 
@@ -566,7 +568,7 @@ header .site-title a:focus,
 
 .modal-header {
   background: var(--clr-background);
-  color: #fff; 
+  color: var(--text-primary); 
   padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
@@ -580,7 +582,7 @@ header .site-title a:focus,
   background: none;
   border: none;
   font-size: 1.6rem;
-  color: #fff; 
+  color: var(--text-primary); 
   cursor: pointer;
   transition: color var(--transition), transform 0.2s ease; 
   position: absolute;
@@ -856,12 +858,5 @@ body {
 
 main {
   flex-grow: 1; /* Allow the main content to take up available vertical space */
-}
-/* anywhere in style.css */
-.project-image--phone {
-  max-width: 200px;   /* whatever size you want */
-  height: auto;       /* preserve aspect ratio */
-  display: block;     /* if you need it to sit on its own line */
-  margin: 1em 0;      /* optional spacing */
 }
 

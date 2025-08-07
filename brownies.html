@@ -3,25 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Brownies Recipe</title>
+  <link rel="stylesheet" href="static/colors.css">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #1a1a2e;
+      background-color: var(--bg-primary);
       padding: 20px;
       margin: 0;
+      color: var(--text-primary);
     }
     .recipe-container {
-      background-color: #162447;
+      background-color: var(--bg-secondary);
       max-width: 600px;
       margin: 40px auto;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      border: 2px solid #3c096c;
+      box-shadow: var(--shadow-medium);
+      border: 2px solid var(--accent-blue);
     }
     h1 {
       text-align: center;
-      color: #a29bfe;
+      color: var(--accent-blue);
       font-size: 2.5em;
       margin-bottom: 20px;
     }
@@ -30,19 +32,19 @@
       padding: 0;
     }
     li {
-      background: linear-gradient(90deg, #3c096c, #162447);
+      background: linear-gradient(90deg, var(--bg-quaternary), var(--bg-secondary));
       margin: 10px 0;
       padding: 10px;
       border-radius: 4px;
       font-size: 1.2em;
-      color: #e0e0e0;
+      color: var(--text-secondary);
     }
     .cook-time {
       margin-top: 25px;
       padding: 15px;
-      background-color: #3c096c; /* Solid violet */
+      background-color: var(--bg-quaternary);
       border-radius: 6px;
-      color: #ffffff;
+      color: var(--text-primary);
       font-size: 1.2em;
       text-align: center;
       font-weight: bold;

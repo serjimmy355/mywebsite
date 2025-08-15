@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
@@ -35,7 +36,52 @@
   <main>
     <section id="contact-details">
       <h2>Get in Touch</h2>
-      <p class="page-intro">I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Feel free to reach out to me through the following channels:</p>
+      <p class="page-intro">I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Feel free to reach out to me using the form below or through the following channels:</p>
+
+      <form id="contact-form" method="POST" action="https://thejimross.co.uk/contact" style="margin-bottom:2em;max-width:420px;background:#fff;padding:1.5em;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject">
+        <br><br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+        <br><br>
+        <button type="submit">Send Message</button>
+        <div id="form-status" style="margin-top:1em;font-weight:500;"></div>
+      </form>
+
+      <script>
+      document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const status = document.getElementById('form-status');
+        status.textContent = '';
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: data
+          });
+          if (res.status === 204) {
+            status.textContent = 'Message sent! Thank you.';
+            status.style.color = 'green';
+            form.reset();
+          } else {
+            const text = await res.text();
+            status.textContent = 'Error: ' + text;
+            status.style.color = 'red';
+          }
+        } catch (err) {
+          status.textContent = 'Network error. Please try again.';
+          status.style.color = 'red';
+        }
+      });
+      </script>
       
       <div class="contact-methods">
         <div class="contact-method">

@@ -9,6 +9,24 @@
   <link rel="icon" href="bird.png" type="image/png">
   <link rel="apple-touch-icon" href="bird.png">
   <style>
+.linkedin-logo {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  vertical-align: middle;
+  transition: transform 0.2s cubic-bezier(.36,.07,.19,.97);
+}
+.linkedin-logo:hover {
+  transform: scale(1.2) rotate(-10deg);
+  animation: linkedin-jiggle 0.4s;
+}
+@keyframes linkedin-jiggle {
+  0% { transform: scale(1.2) rotate(-10deg); }
+  25% { transform: scale(1.2) rotate(10deg); }
+  50% { transform: scale(1.2) rotate(-10deg); }
+  75% { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1.2) rotate(0deg); }
+}
 .main h2, #contact-details > h2 {
   text-align: center;
 }
@@ -178,7 +196,14 @@ body {
         
         <div class="contact-method">
           
-          <a href="https://www.linkedin.com/in/jim-ross-397719276/" target="_blank" rel="noopener noreferrer" class="contact-link contact-linkedin">View my LinkedIn Profile</a>
+          <a href="https://www.linkedin.com/in/jim-ross-397719276/" target="_blank" rel="noopener noreferrer" class="contact-link contact-linkedin" aria-label="LinkedIn Profile">
+            <span class="linkedin-logo">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="48" height="48" fill="#0A66C2">
+                <rect width="32" height="32" rx="6" fill="#fff"/>
+                <path d="M9 12h3v11H9V12zm1.5-3a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm4.5 3h2.8v1.5h.04c.39-.74 1.34-1.5 2.76-1.5C23.42 12 25 13.34 25 16.08V23h-3v-6.08c0-1.45-.52-2.42-1.82-2.42-1.01 0-1.61.68-1.87 1.34-.1.23-.13.55-.13.87V23h-3V12z" fill="#0A66C2"/>
+              </svg>
+            </span>
+          </a>
         </div>
       </div>
 

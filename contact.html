@@ -14,58 +14,53 @@
   width: 130px;
   height: 35px;
   border-radius: 30px;
-  background-color: white;
+  background: #fff;
   border: 1px #2867b2 solid;
   overflow: hidden;
   cursor: pointer;
-  display: inline-block;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background 0.3s;
+}
+.linkedin-follow-btn .icon {
+  width: 33px;
+  height: 33px;
+  margin-left: 2px;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: none;
 }
 .linkedin-follow-btn .text1 {
   font-size: 15px;
   font-weight: 600;
-  margin-left: 22%;
-  position: relative;
-  z-index: 2;
+  color: #000;
+  transition: color 0.3s;
 }
 .linkedin-follow-btn .text2 {
-  position: absolute;
-  top: 25%;
-  left: -50px;
-  font-weight: 700;
-  font-size: 14px;
-  color: white;
-  z-index: 2;
-  transition: transform 0.6s;
+  display: none;
 }
-.linkedin-follow-btn .icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: transform 0.5s;
-  z-index: 2;
+.linkedin-follow-btn:hover {
+  background: #2867b2;
 }
-.linkedin-follow-btn .icon::before {
-  position: absolute;
-  left: -100px;
-  top: 0;
-  z-index: 1;
-  content: '';
-  width: 130px;
-  height: 33px;
-  border-radius: 30px;
-  background-color: #2867b2;
-}
-.linkedin-follow-btn:hover .icon {
-  transform: translateX(96px);
-  transition: transform 0.5s;
+.linkedin-follow-btn:hover .text1 {
+  color: #fff;
 }
 .linkedin-follow-btn:hover .text2 {
-  transform: translateX(100px);
-  transition: transform 0.6s;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
 }
-.linkedin-follow-btn:active {
-  transform: scale(1.03);
+.linkedin-follow-btn:hover .icon {
+  margin-left: 8px;
+  margin-right: 8px;
 }
 .linkedin-logo {
   display: inline-block;
@@ -220,6 +215,7 @@ body {
 
         <button class="send-btn" type="submit">Send Message</button>
         <div id="form-status" style="margin-top:1em;font-weight:500;"></div>
+        <p class="contact-note">I look forward to hearing from you!</p>
       </form>
 
       <script>
@@ -265,8 +261,6 @@ body {
           </a>
         </div>
       </div>
-
-      <p class="contact-note">I look forward to hearing from you!</p>
     </section>
   </main>
 

@@ -10,78 +10,80 @@
   <link rel="apple-touch-icon" href="bird.png">
   <style>
 body {
-    background: url('background.png') no-repeat center center fixed;
-    background-size: cover;
-    font-family: Arial, sans-serif;
+  background: var(--bg-primary);
+  font-family: Arial, sans-serif;
+  color: var(--text-secondary);
 }
 .contact-container {
-    background: #e0e0e0;
-    border-radius: 24px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-    max-width: 480px;
-    margin: 32px auto;
-    padding: 32px 32px 16px 32px;
-    text-align: center;
+  background: var(--bg-secondary);
+  border-radius: 24px;
+  box-shadow: var(--shadow-medium);
+  max-width: 480px;
+  margin: 32px auto;
+  padding: 32px 32px 16px 32px;
+  text-align: center;
 }
 .contact-container h2 {
-    margin-bottom: 24px;
-    font-size: 1.5em;
-    font-weight: 600;
-    color: #222;
+  margin-bottom: 24px;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 .form-label {
-    display: block;
-    text-align: left;
-    margin-bottom: 6px;
-    font-size: 1em;
-    color: #333;
+  display: block;
+  text-align: left;
+  margin-bottom: 6px;
+  font-size: 1em;
+  color: var(--text-label);
 }
 .form-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 18px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-    background: #fff;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1em;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  box-sizing: border-box;
 }
 .form-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1em;
-    background: #fff;
-    min-height: 80px;
-    box-sizing: border-box;
-    margin-bottom: 18px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 1em;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  min-height: 80px;
+  box-sizing: border-box;
+  margin-bottom: 18px;
 }
 .send-btn {
-    width: 100%;
-    background: #0074c2;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 14px 0;
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    transition: background 0.2s;
+  width: 100%;
+  background: var(--accent-blue);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 14px 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  transition: background 0.2s;
 }
 .send-btn:hover {
-    background: #005fa3;
+  background: var(--accent-blue-dark);
 }
 .privacy {
-    font-size: 0.95em;
-    color: #555;
-    margin-top: 12px;
+  font-size: 0.95em;
+  color: var(--text-muted);
+  margin-top: 12px;
 }
 .privacy a {
-    color: #0074c2;
-    text-decoration: underline;
+  color: var(--accent-blue);
+  text-decoration: underline;
 }
 </style>
 </head>
@@ -161,15 +163,9 @@ body {
       </script>
       
       <div class="contact-methods">
-        <div class="contact-method">
-          <h3>Email</h3>
-          <p>The most direct way to contact me is via email. I typically respond within 24-48 hours.</p>
-          <a href="mailto:jimross355@hotmail.com" class="contact-link contact-email">jimross355@hotmail.com</a>
-        </div>
         
         <div class="contact-method">
-          <h3>LinkedIn</h3>
-          <p>Connect with me on LinkedIn to see more about my professional background and network.</p>
+          
           <a href="https://www.linkedin.com/in/jim-ross-397719276/" target="_blank" rel="noopener noreferrer" class="contact-link contact-linkedin">View my LinkedIn Profile</a>
         </div>
       </div>

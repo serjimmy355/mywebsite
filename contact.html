@@ -9,109 +9,93 @@
   <link rel="icon" href="bird.png" type="image/png">
   <link rel="apple-touch-icon" href="bird.png">
   <style>
-.linkedin-follow-btn {
+/* --- LinkedIn follow button (scoped, won’t affect .send-btn) --- */
+.linkedin-follow-btn{
   position: relative;
-  width: 130px;
-  height: 35px;
-  border-radius: 30px;
-  background: #fff;
-  border: 1px #2867b2 solid;
-  overflow: hidden;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  transition: background 0.3s;
+  display:inline-block;
+  width:130px;
+  height:35px;
+  line-height:35px;
+  border-radius:30px;
+  background:#fff;
+  border:1px solid #2867b2;
+  overflow:hidden;
+  cursor:pointer;
+  text-decoration:none;
+  color:#0b0f19;
+  user-select:none;
 }
-.linkedin-follow-btn .icon {
-  width: 33px;
-  height: 33px;
-  margin-left: 2px;
-  margin-right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: none;
+.linkedin-follow-btn .text1{
+  font-size:15px;
+  font-weight:600;
+  margin-left:22%;
+  position:relative;
+  z-index:2;
 }
-.linkedin-follow-btn .text1 {
-  font-size: 15px;
-  font-weight: 600;
-  color: #000;
-  transition: color 0.3s;
+.linkedin-follow-btn .text2{
+  position:absolute;
+  top:25%;
+  left:-50px;
+  font-weight:700;
+  font-size:14px;
+  color:#fff;
+  z-index:2;
+  transition:transform .6s;
 }
-.linkedin-follow-btn .text2 {
-  display: none;
+.linkedin-follow-btn .icon{
+  position:absolute;
+  top:0;
+  left:0;
+  transition:transform .5s;
+  z-index:2;
 }
-.linkedin-follow-btn:hover {
-  background: #2867b2;
+.linkedin-follow-btn .icon::before{
+  position:absolute;
+  left:-100px;
+  top:0;
+  content:'';
+  width:130px;
+  height:33px;
+  border-radius:30px;
+  background:#2867b2;
+  z-index:1;
 }
-.linkedin-follow-btn:hover .text1 {
-  color: #fff;
+.linkedin-follow-btn:hover .icon{ transform:translateX(96px) }
+.linkedin-follow-btn:hover .text2{ transform:translateX(100px) }
+.linkedin-follow-btn:active{ transform:scale(1.03) }
+.linkedin-follow-btn:focus-visible{
+  outline:2px solid var(--accent-blue, #4DC3FA);
+  outline-offset:2px;
 }
-.linkedin-follow-btn:hover .text2 {
-  display: block;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 700;
-  font-size: 16px;
-  color: #fff;
-}
-.linkedin-follow-btn:hover .icon {
-  margin-left: 8px;
-  margin-right: 8px;
-}
-.linkedin-logo {
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  vertical-align: middle;
-  transition: transform 0.2s cubic-bezier(.36,.07,.19,.97);
-}
-.linkedin-logo:hover {
-  transform: scale(1.2) rotate(-10deg);
-  animation: linkedin-jiggle 0.4s infinite;
-}
-@keyframes linkedin-jiggle {
-  0% { transform: scale(1.2) rotate(-10deg); }
-  25% { transform: scale(1.2) rotate(10deg); }
-  50% { transform: scale(1.2) rotate(-10deg); }
-  75% { transform: scale(1.2) rotate(10deg); }
-  100% { transform: scale(1.2) rotate(0deg); }
-}
-.main h2, #contact-details > h2 {
-  text-align: center;
-}
+
+/* --- Page styles --- */
+.main h2, #contact-details > h2 { text-align: center; }
+
 body {
   background: var(--bg-primary);
   font-family: Arial, sans-serif;
   color: var(--text-secondary);
 }
+
 .contact-container {
-  background: var(--quaternary);
-    border-radius: 24px;
-    max-width: 480px;
-    margin: 32px auto;
-    padding: 32px 32px 16px 32px;
-    text-align: center;
-}
-.contact-container h2 {
-  margin-bottom: 24px;
-  font-size: 1.5em;
-  font-weight: 600;
-  color: var(--text-primary);
+  background: var(--bg-quaternary);
+  border-radius: 24px;
+  max-width: 480px;
+  margin: 32px auto;
+  padding: 32px 32px 16px 32px;
   text-align: center;
 }
-.contact-note {
-  text-align: center;
-}
+
 .contact-container h2 {
   margin-bottom: 24px;
   font-size: 1.5em;
   font-weight: 600;
   color: var(--accent-blue);
+  text-align: center;
 }
+
+.contact-note { text-align: center; }
+
 .form-label {
   display: block;
   text-align: left;
@@ -119,6 +103,7 @@ body {
   font-size: 1em;
   color: var(--text-label);
 }
+
 .form-input {
   width: 100%;
   padding: 10px;
@@ -127,9 +112,10 @@ body {
   border-radius: 8px;
   font-size: 1em;
   background: #ffffff;
-    color: #000;
+  color: #000;
   box-sizing: border-box;
 }
+
 .form-textarea {
   width: 100%;
   padding: 10px;
@@ -137,11 +123,12 @@ body {
   border-radius: 8px;
   font-size: 1em;
   background: #ffffff;
-    color: #000;
+  color: #000;
   min-height: 80px;
   box-sizing: border-box;
   margin-bottom: 18px;
 }
+
 .send-btn {
   width: 100%;
   background: #4DC3FA;
@@ -156,9 +143,9 @@ body {
   margin-bottom: 8px;
   transition: background 0.2s;
 }
-.send-btn:hover {
-  background: #ff8000;
-}
+
+.send-btn:hover { background: #ff8000; }
+
 .privacy {
   font-size: 0.95em;
   color: var(--text-muted);
@@ -168,7 +155,7 @@ body {
   color: var(--accent-blue);
   text-decoration: underline;
 }
-</style>
+  </style>
 </head>
 <body>
   <header>
@@ -185,11 +172,12 @@ body {
     </button>
 
     <nav id="primary-navigation" class="primary-navigation" data-visible="false">
-      <a href="index.html" class="nav-link">Home</a> <a href="aboutme.html" class="nav-link about-link"><span class="link-text">About</span></a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="aboutme.html" class="nav-link about-link"><span class="link-text">About</span></a>
       <a href="projects.html" class="nav-link">Projects</a>
       <a href="music.html" class="nav-link">Music</a>
       <a href="traintt.html" class="nav-link">Train Times</a>
-      <a href="contact.html" class="nav-link active-nav-link">Contact</a> 
+      <a href="contact.html" class="nav-link active-nav-link">Contact</a>
     </nav>
   </header>
 
@@ -199,75 +187,55 @@ body {
       <p class="page-intro">I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Feel free to reach out to me using the form below or through the following channels:</p>
 
       <div class="contact-container">
-    <h2>Send us a message!</h2>
-    <form id="contact-form" method="POST" action="https://thejimross.co.uk/contact" style="margin-bottom:2em;max-width:420px;background:#3e4659;padding:1.5em;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);">
-        <label class="form-label" for="name">Name:</label>
-        <input class="form-input" type="text" id="name" name="name" required>
+        <h2>Send us a message!</h2>
 
-        <label class="form-label" for="email">Email:</label>
-        <input class="form-input" type="email" id="email" name="email" required>
+        <form id="contact-form" method="POST" action="https://thejimross.co.uk/contact" style="margin-bottom:2em;max-width:420px;background:#3e4659;padding:1.5em;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);">
+          <label class="form-label" for="name">Name:</label>
+          <input class="form-input" type="text" id="name" name="name" required>
 
-        <label class="form-label" for="subject">Subject:</label>
-        <input class="form-input" type="text" id="subject" name="subject">
+          <label class="form-label" for="email">Email:</label>
+          <input class="form-input" type="email" id="email" name="email" required>
 
-        <label class="form-label" for="message">Message:</label>
-        <textarea class="form-textarea" id="message" name="message" rows="5" required></textarea>
+          <label class="form-label" for="subject">Subject:</label>
+          <input class="form-input" type="text" id="subject" name="subject">
 
-        <button class="send-btn" type="submit">Send Message</button>
-        <div id="form-status" style="margin-top:1em;font-weight:500;"></div>
-        <p class="contact-note">I look forward to hearing from you!</p>
-      </form>
+          <label class="form-label" for="message">Message:</label>
+          <textarea class="form-textarea" id="message" name="message" rows="5" required></textarea>
 
-      <script>
-      document.getElementById('contact-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const status = document.getElementById('form-status');
-        status.textContent = '';
-        const data = new FormData(form);
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            body: data
+          <button class="send-btn" type="submit">Send Message</button>
+          <div id="form-status" style="margin-top:1em;font-weight:500;"></div>
+          <p class="contact-note">I look forward to hearing from you!</p>
+        </form>
+
+        <script>
+          document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const status = document.getElementById('form-status');
+            status.textContent = '';
+            const data = new FormData(form);
+            try {
+              const res = await fetch(form.action, { method: 'POST', body: data });
+              if (res.status === 204) {
+                status.textContent = 'Message sent! Thank you.';
+                status.style.color = 'green';
+                form.reset();
+              } else {
+                const text = await res.text();
+                status.textContent = 'Error: ' + text;
+                status.style.color = 'red';
+              }
+            } catch (err) {
+              status.textContent = 'Network error. Please try again.';
+              status.style.color = 'red';
+            }
           });
-          if (res.status === 204) {
-            status.textContent = 'Message sent! Thank you.';
-            status.style.color = 'green';
-            form.reset();
-          } else {
-            const text = await res.text();
-            status.textContent = 'Error: ' + text;
-            status.style.color = 'red';
-          }
-        } catch (err) {
-          status.textContent = 'Network error. Please try again.';
-          status.style.color = 'red';
-        }
-      });
-      </script>
-      
-      <div class="contact-methods">
-        
-        <div class="contact-method">
-          
-          <a href="https://www.linkedin.com/in/jim-ross-397719276/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-            <button class="linkedin-follow-btn" type="button">
+        </script>
+
+        <div class="contact-methods" style="margin-top:8px;">
+          <div class="contact-method">
+            <a href="https://www.linkedin.com/in/jim-ross-397719276/"
+               target="_blank" rel="noopener noreferrer"
+               class="linkedin-follow-btn" aria-label="Follow me on LinkedIn">
               <span class="icon">
-                <svg fill="none" height="33" viewBox="0 0 120 120" width="33" xmlns="http://www.w3.org/2000/svg"><g clip-rule="evenodd" fill-rule="evenodd"><path d="m120 60.0002c0 33.1366-26.8633 59.9998-60 59.9998-33.138 0-60-26.8632-60-59.9998 0-33.1376 26.8617-60.0002 60-60.0002 33.1364.00031715 60 26.8626 60 60.0002z" fill="#2867b2"></path><g fill="#fff"><path d="m63.8771 54.3451c.2959-.3181.411-.4154.4938-.5356 4.0325-5.884 9.7919-7.6141 16.5119-6.5811 7.7657 1.1953 12.7354 6.6312 14.004 14.949.3009 1.9723.4506 3.9525.449 5.9464-.0047 8.2817-.0177 16.563.0178 24.844.0054.9327-.2242 1.2067-1.1801 1.195-4.3386-.052-8.6787-.0514-13.0179 0-.9493.0104-1.1925-.2601-1.1874-1.1944.0352-7.7238.0228-15.4472.0152-23.1703-.0029-1.7554-.1234-3.4997-.6169-5.1996-1.5816-5.4524-7.7846-7.3664-12.2018-3.7408-2.3866 1.9581-3.3196 4.5473-3.3015 7.5947.0386 7.2858.0114 14.5713.0114 21.8571 0 .9558-.0533 1.9146.0162 2.8647.0608.8259-.2766.9848-1.0248.98-4.4194-.0298-8.8379-.033-13.2567.0019-.8017.0063-1.09-.1567-1.0808-1.038.0647-6.5672.091-13.1375.0939-19.7052.0012-8.0822-.0149-16.1637-.0714-24.2455-.006-.8848.1792-1.1465 1.0932-1.1363 4.4194.0495 8.8383.0422 13.2571.0051.7957-.0073 1.0177.2321.9923 1.0063-.0549 1.6656-.0165 3.3335-.0165 5.3026z"></path><path d="m40.1241 71.1028c0 7.2826-.0155 14.5659.0187 21.8491.0038.9045-.1785 1.2264-1.1645 1.2134-4.377-.0584-8.7549-.0447-13.1324-.0079-.8129.0066-1.0869-.1963-1.086-1.0507.0213-14.6861.0178-29.3712-.0041-44.0569-.0009-.765.1856-1.0209.9882-1.0133 4.4579.038 8.9154.0428 13.3722-.0032.8896-.0098 1.0279.3149 1.0244 1.1008-.027 7.3235-.0152 14.6458-.0165 21.9687z"></path><path d="m32.5678 25.8388c5.8726.0064 9.6878 4.6579 8.2959 10.1135-1.0517 4.1194-5.3122 6.491-10.2299 5.6924-5.2234-.8477-8.1348-5.9452-6.21-10.8714 1.2013-3.0767 4.2757-4.9392 8.144-4.9345z"></path></g></g></svg>
-              </span>
-              <span class="text1">Follow me</span>
-              <span class="text2">1,2k</span>
-            </button>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 Jim Ross
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+                <svg fill="none" height="33" viewBox="0 0 120 120" width="33" xmlns="http://www.w3.org/2000/svg"><g clip-rule="evenodd" fill-rule="evenodd"><path d="m120 60.0002c0 33.1366-26.8633 59.9998-60 59.9998-33.138 0-60-26.8632-60-59.9998 0-33.1376 26.8617-60.0002 60-60.0002 33.1364.00031715 60 26.8626 60 60.0002z" fill="#2867b2"></path><g fill="#fff"><path d="m63.8771 54.3451c.2959-.3181.411-.4154.4938-.5356 4.0325-5.884 9.7919-7.6141 16.5119-6.5811 7.7657 1.1953 12.7354 6.6312 14.004 14.949.3009 1.9723.4506 3.9525.449 5.9464-.0047 8.2817-.0177 16.563.0178 24.844.0054.9327-.2242 1.2067-1.1801 1.195-4.3386-.052-8.6787-.0514-13.0179 0-.9493.0104-1.1925-.2601-1.1874-1.1944.0352-7.7238.0228-15.4472.0152-23.1703-.0029-1.7554-.1234-3.4997-.6169-5.1996-1.5816-5.4524-7.7846-7.3664-12.2018-3.7408-2.3866 1.9581-3.3196 4.5473-3.3015 7.5947.0386 7.2858.0114 14.5713.0114 21.8571 0 .95

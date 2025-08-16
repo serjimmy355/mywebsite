@@ -1,12 +1,3 @@
-# Pretty URLs → files
-/about     /aboutme.html   200
-/projects  /projects.html  200
-/music     /music.html     200
-/traintt   /traintt.html   200
-
-# Contact: rewrite both forms, no redirect = no loop
-/contact   /contact.html   200
-/contact/  /contact.html   200
 /contact/* /404.html       404
 
 # Let the API go to your Worker

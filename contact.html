@@ -143,16 +143,16 @@
       <div class="contact-container">
         <h2>Send us a message!</h2>
 
-        <!-- POST to same-origin API handled by Worker route: thejimross.co.uk/api/contact* -->
+        <!-- Same-origin API handled by Worker route: thejimross.co.uk/api/contact* -->
         <form id="contact-form" method="POST" action="/api/contact" style="margin-bottom:2em;max-width:420px;background:#2e3548;padding:1.5em;border-radius:12px;">
           <label class="form-label" for="name">Name:</label>
-          <input class="form-input" type="text" id="name" name="name" required>
+          <input class="form-input" type="text" id="name" name="name" required autocomplete="name">
 
           <label class="form-label" for="email">Email:</label>
-          <input class="form-input" type="email" id="email" name="email" required>
+          <input class="form-input" type="email" id="email" name="email" required autocomplete="email">
 
           <label class="form-label" for="subject">Subject:</label>
-          <input class="form-input" type="text" id="subject" name="subject">
+          <input class="form-input" type="text" id="subject" name="subject" autocomplete="subject">
 
           <label class="form-label" for="message">Message:</label>
           <textarea class="form-textarea" id="message" name="message" rows="5" required></textarea>
@@ -176,8 +176,8 @@
                 status.style.color = 'green';
                 form.reset();
               } else {
-                const text = await res.text().catch(()=>'');
-                status.textContent = 'Error: ' + (text || res.status);
+                const text = await res.text().catch(()=> '');
+                status.textContent = `Error ${res.status}: ${text.slice(0,200)}`;
                 status.style.color = 'red';
               }
             } catch (err) {

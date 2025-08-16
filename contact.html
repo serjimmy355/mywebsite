@@ -146,26 +146,26 @@
         <!-- Same-origin API handled by Worker route: thejimross.co.uk/api/contact* -->
         <form id="contact-form" method="POST" action="/api/contact" style="margin-bottom:2em;max-width:420px;background:#2e3548;padding:1.5em;border-radius:12px;">
           <label class="form-label" for="name">Name:</label>
-          <input class="form-input" type="text" id="name" name="name" required autocomplete="name">  placeholder="Name"
+          <input class="form-input" type="text" id="name" name="name" required autocomplete="name" placeholder="Name">
 
           <label class="form-label" for="email">Email:</label>
-          <input class="form-input" type="email" id="email" name="email" required autocomplete="email">  placeholder="Email"
+          <input class="form-input" type="email" id="email" name="email" required autocomplete="email" placeholder="Email">
 
-          <label class="form-label" for="phone">Phone (optional):</label>
-          <input class="form-input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="e.g. +44 **** ***123"
-          
+          <label class="form-label" for="phone">Phone:</label>
+          <input class="form-input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="e.g. +44 7700 900123">
+
           <label class="form-label" for="subject">Subject:</label>
-          <input class="form-input" type="text" id="subject" name="subject" autocomplete="subject"> placeholder="Subject"
+          <input class="form-input" type="text" id="subject" name="subject" autocomplete="subject" placeholder="Subject">
 
-          <label class="form-label" for="message">Message:</label> placeholder="Enter your message here..."
-          <textarea class="form-textarea" id="message" name="message" rows="5" required></textarea>
+          <label class="form-label" for="message">Message:</label>
+          <textarea class="form-textarea" id="message" name="message" rows="5" required placeholder="Enter your message here..."></textarea>
 
           <button class="send-btn" type="submit">Send Message</button>
           <div id="form-status" aria-live="polite" style="margin-top:1em;font-weight:500;"></div>
           <p class="contact-note">I look forward to hearing from you!</p>
         </form>
 
-       <script>
+        <script>
 (() => {
   const form   = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
@@ -182,13 +182,10 @@
     const data   = new FormData(form);
 
     try {
-      console.log('POST', action);
       const res = await fetch(action, { method: 'POST', body: data, cache: 'no-store' });
       const ct  = (res.headers.get('content-type') || '').toLowerCase();
 
-      console.log('Response', res.status, ct);
-
-      // Treat HTML as an error (that means you hit Pages, not the Worker)
+      // Treat HTML as an error (means Pages handled it, not the Worker)
       const looksLikeHtml = ct.includes('text/html');
 
       if ((res.status === 204 || res.status === 200) && !looksLikeHtml) {
@@ -201,7 +198,6 @@
         status.style.color = 'red';
       }
     } catch (err) {
-      console.error(err);
       status.textContent = 'Network error. Please try again.';
       status.style.color = 'red';
     } finally {
@@ -209,8 +205,7 @@
     }
   });
 })();
-</script>
-
+        </script>
 
         <div class="contact-methods">
           <div class="contact-method">
@@ -238,5 +233,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-

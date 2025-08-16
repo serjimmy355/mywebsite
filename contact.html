@@ -9,119 +9,107 @@
   <link rel="icon" href="bird.png" type="image/png">
   <link rel="apple-touch-icon" href="bird.png">
   <style>
-.contact-methods {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 16px;
-}
-.linkedin-logo {
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  vertical-align: middle;
-  transition: transform 0.2s cubic-bezier(.36,.07,.19,.97);
-}
-.linkedin-logo:hover {
-  transform: scale(1.2) rotate(-10deg);
-  animation: linkedin-jiggle 0.4s infinite;
-}
-@keyframes linkedin-jiggle {
-  0% { transform: scale(1.2) rotate(-10deg); }
-  25% { transform: scale(1.2) rotate(10deg); }
-  50% { transform: scale(1.2) rotate(-10deg); }
-  75% { transform: scale(1.2) rotate(10deg); }
-  100% { transform: scale(1.2) rotate(0deg); }
-}
-.main h2, #contact-details > h2 {
-  text-align: center;
-}
-body {
-  background: var(--bg-primary);
-  font-family: Arial, sans-serif;
-  color: var(--text-secondary);
-}
-.contact-container {
-  background: var(--bg-tertiary);
-  border-radius: 24px;
-  max-width: 480px;
-  margin: 32px auto;
-  padding: 32px 32px 16px 32px;
-  text-align: center;
-}
-.contact-container h2 {
-  margin-bottom: 24px;
-  font-size: 1.5em;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-align: center;
-}
-.contact-note {
-  text-align: center;
-}
-.contact-container h2 {
-  margin-bottom: 24px;
-  font-size: 1.5em;
-  font-weight: 600;
-  color: var(--accent-blue);
-}
-.form-label {
-  display: block;
-  text-align: left;
-  margin-bottom: 6px;
-  font-size: 1em;
-  color: var(--text-label);
-}
-.form-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 18px;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  font-size: 1em;
-  background: #ffffff;
-    color: #000;
-  box-sizing: border-box;
-}
-.form-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  font-size: 1em;
-  background: #ffffff;
-    color: #000;
-  min-height: 80px;
-  box-sizing: border-box;
-  margin-bottom: 18px;
-}
-.send-btn {
-  width: 100%;
-  background: #4DC3FA;
-  color: var(--text-primary);
-  border: none;
-  border-radius: 8px;
-  padding: 14px 0;
-  font-size: 1.1em;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  transition: background 0.2s;
-}
-.send-btn:hover {
-  background: #ff8000;
-}
-.privacy {
-  font-size: 0.95em;
-  color: var(--text-muted);
-  margin-top: 12px;
-}
-.privacy a {
-  color: var(--accent-blue);
-  text-decoration: underline;
-}
-</style>
+    .contact-methods {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 16px;
+    }
+    .linkedin-logo {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      vertical-align: middle;
+      transition: transform 0.2s cubic-bezier(.36,.07,.19,.97);
+    }
+    .linkedin-logo:hover {
+      transform: scale(1.2) rotate(-10deg);
+      animation: linkedin-jiggle 0.4s infinite;
+    }
+    @keyframes linkedin-jiggle {
+      0% { transform: scale(1.2) rotate(-10deg); }
+      25% { transform: scale(1.2) rotate(10deg); }
+      50% { transform: scale(1.2) rotate(-10deg); }
+      75% { transform: scale(1.2) rotate(10deg); }
+      100% { transform: scale(1.2) rotate(0deg); }
+    }
+    .main h2, #contact-details > h2 { text-align: center; }
+    body {
+      background: var(--bg-primary);
+      font-family: Arial, sans-serif;
+      color: var(--text-secondary);
+    }
+    .contact-container {
+      background: var(--bg-tertiary);
+      border-radius: 24px;
+      max-width: 480px;
+      margin: 32px auto;
+      padding: 32px 32px 16px 32px;
+      text-align: center;
+    }
+    .contact-container h2 {
+      margin-bottom: 24px;
+      font-size: 1.5em;
+      font-weight: 600;
+      color: var(--accent-blue);
+      text-align: center;
+    }
+    .contact-note { text-align: center; }
+    .form-label {
+      display: block;
+      text-align: left;
+      margin-bottom: 6px;
+      font-size: 1em;
+      color: var(--text-label);
+    }
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      font-size: 1em;
+      background: #ffffff;
+      color: #000;
+      box-sizing: border-box;
+    }
+    .form-textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      font-size: 1em;
+      background: #ffffff;
+      color: #000;
+      min-height: 80px;
+      box-sizing: border-box;
+      margin-bottom: 18px;
+    }
+    .send-btn {
+      width: 100%;
+      background: #4DC3FA;
+      color: var(--text-primary);
+      border: none;
+      border-radius: 8px;
+      padding: 14px 0;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      transition: background 0.2s;
+    }
+    .send-btn:hover { background: #ff8000; }
+    .privacy {
+      font-size: 0.95em;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+    .privacy a {
+      color: var(--accent-blue);
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -138,11 +126,12 @@ body {
     </button>
 
     <nav id="primary-navigation" class="primary-navigation" data-visible="false">
-      <a href="index.html" class="nav-link">Home</a> <a href="aboutme.html" class="nav-link about-link"><span class="link-text">About</span></a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="aboutme.html" class="nav-link about-link"><span class="link-text">About</span></a>
       <a href="projects.html" class="nav-link">Projects</a>
       <a href="music.html" class="nav-link">Music</a>
       <a href="traintt.html" class="nav-link">Train Times</a>
-      <a href="contact.html" class="nav-link active-nav-link">Contact</a> 
+      <a href="contact.html" class="nav-link active-nav-link">Contact</a>
     </nav>
   </header>
 
@@ -152,72 +141,68 @@ body {
       <p class="page-intro">I'm always open to discussing new projects, creative ideas, or opportunities to be part of something great. Feel free to reach out to me using the form below or through the following channels:</p>
 
       <div class="contact-container">
-  <h2>Send us a message!</h2>
-  <form id="contact-form" method="POST" action="https://contact.thejimross.co.uk" style="margin-bottom:2em;max-width:420px;background:#2e3548;padding:1.5em;border-radius:12px;">
-    <label class="form-label" for="name">Name:</label>
-    <input class="form-input" type="text" id="name" name="name" required>
+        <h2>Send us a message!</h2>
 
-    <label class="form-label" for="email">Email:</label>
-    <input class="form-input" type="email" id="email" name="email" required>
+        <!-- POST to same-origin API handled by Worker route: thejimross.co.uk/api/contact* -->
+        <form id="contact-form" method="POST" action="/api/contact" style="margin-bottom:2em;max-width:420px;background:#2e3548;padding:1.5em;border-radius:12px;">
+          <label class="form-label" for="name">Name:</label>
+          <input class="form-input" type="text" id="name" name="name" required>
 
-    <label class="form-label" for="subject">Subject:</label>
-    <input class="form-input" type="text" id="subject" name="subject">
+          <label class="form-label" for="email">Email:</label>
+          <input class="form-input" type="email" id="email" name="email" required>
 
-    <label class="form-label" for="message">Message:</label>
-    <textarea class="form-textarea" id="message" name="message" rows="5" required></textarea>
+          <label class="form-label" for="subject">Subject:</label>
+          <input class="form-input" type="text" id="subject" name="subject">
 
-    <button class="send-btn" type="submit">Send Message</button>
-    <div id="form-status" style="margin-top:1em;font-weight:500;"></div>
-    <p class="contact-note">I look forward to hearing from you!</p>
-  </form>
+          <label class="form-label" for="message">Message:</label>
+          <textarea class="form-textarea" id="message" name="message" rows="5" required></textarea>
 
-      <script>
-      document.getElementById('contact-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const form = e.target;
-        const status = document.getElementById('form-status');
-        status.textContent = '';
-        const data = new FormData(form);
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            body: data
+          <button class="send-btn" type="submit">Send Message</button>
+          <div id="form-status" aria-live="polite" style="margin-top:1em;font-weight:500;"></div>
+          <p class="contact-note">I look forward to hearing from you!</p>
+        </form>
+
+        <script>
+          document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const status = document.getElementById('form-status');
+            status.textContent = '';
+            const data = new FormData(form);
+            try {
+              const res = await fetch(form.action, { method: 'POST', body: data });
+              if (res.status === 204) {
+                status.textContent = 'Message sent! Thank you.';
+                status.style.color = 'green';
+                form.reset();
+              } else {
+                const text = await res.text().catch(()=>'');
+                status.textContent = 'Error: ' + (text || res.status);
+                status.style.color = 'red';
+              }
+            } catch (err) {
+              status.textContent = 'Network error. Please try again.';
+              status.style.color = 'red';
+            }
           });
-          if (res.status === 204) {
-            status.textContent = 'Message sent! Thank you.';
-            status.style.color = 'green';
-            form.reset();
-          } else {
-            const text = await res.text();
-            status.textContent = 'Error: ' + text;
-            status.style.color = 'red';
-          }
-        } catch (err) {
-          status.textContent = 'Network error. Please try again.';
-          status.style.color = 'red';
-        }
-      });
-      </script>
-      
-      <div class="contact-methods">
-        
-  </div>
-</div>
+        </script>
 
-<div class="contact-methods">
-  <div class="contact-method">
-    <a href="https://www.linkedin.com/in/jim-ross-397719276/" target="_blank" rel="noopener noreferrer" class="contact-link contact-linkedin" aria-label="LinkedIn Profile">
-      <span class="linkedin-logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="48" height="48" fill="#0A66C2">
-          <rect width="32" height="32" rx="6" fill="#fff"/>
-          <path d="M9 12h3v11H9V12zm1.5-3a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm4.5 3h2.8v1.5h.04c.39-.74 1.34-1.5 2.76-1.5C23.42 12 25 13.34 25 16.08V23h-3v-6.08c0-1.45-.52-2.42-1.82-2.42-1.01 0-1.61.68-1.87 1.34-.1.23-.13.55-.13.87V23h-3V12z" fill="#0A66C2"/>
-        </svg>
-      </span>
-    </a>
-  </div>
-</div>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <a href="https://www.linkedin.com/in/jim-ross-397719276/"
+               target="_blank" rel="noopener noreferrer"
+               class="contact-link contact-linkedin"
+               aria-label="LinkedIn Profile">
+              <span class="linkedin-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="48" height="48" fill="#0A66C2">
+                  <rect width="32" height="32" rx="6" fill="#fff"/>
+                  <path d="M9 12h3v11H9V12zm1.5-3a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm4.5 3h2.8v1.5h.04c.39-.74 1.34-1.5 2.76-1.5C23.42 12 25 13.34 25 16.08V23h-3v-6.08c0-1.45-.52-2.42-1.82-2.42-1.01 0-1.61.68-1.87 1.34-.1.23-.13.55-.13.87V23h-3V12z" fill="#0A66C2"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
-
     </section>
   </main>
 

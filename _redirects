@@ -1,16 +1,14 @@
-# Pretty URLs → real files (internal rewrites, no redirect)
-#/               /index.html     200   # optional; Pages serves index.html at /
+# Pretty URLs → files
 /about           /aboutme.html   200
 /projects        /projects.html  200
 /music           /music.html     200
 /traintt         /traintt.html   200
-/contact         /contact.html   200
-/contact/        /contact.html   200
 
-/contact         /contact.html   200
+# Contact: canonical is /contact (no slash)
+# redirect /contact/ → /contact, then rewrite /contact → file
 /contact/        /contact        301
+/contact         /contact.html   200
 /contact/*       /404.html       404
 
-# Let the API go to your Worker untouched
-# (Workers fire before Pages anyway, but this makes intent explicit)
+# Let API paths pass through (Worker handles them)
 /api/*           /api/:splat     200

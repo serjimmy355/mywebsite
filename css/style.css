@@ -1,0 +1,157 @@
+/* Global Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.main-header {
+    background-color: #008080; /* Dark green */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-header h1 {
+    margin: 0;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav ul li {
+    margin: 0 15px;
+}
+
+.main-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.main-nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Intro Section */
+.intro h2 {
+    font-size: 28px;
+    color: #005050; /* Dark green */
+}
+
+.intro p {
+    font-size: 16px;
+}
+
+/* Dynamic Content */
+.dynamic-content p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Footer Styles */
+.main-footer {
+    background-color: #008080; /* Dark green */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.main-footer p {
+    margin: 0;
+}
+/* 🌙 Dark Mode Styles */
+.dark-mode {
+    background-color: #121212;  /* Dark gray instead of pure black */
+    color: #f0f0f0; /* Soft white text */
+}
+
+.dark-mode a {
+    color: #1e90ff; /* Light blue links */
+}
+
+.dark-mode button,
+.dark-mode input,
+.dark-mode textarea {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.dark-mode header,
+.dark-mode footer,
+.dark-mode .card {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+.dark-mode img {
+    filter: brightness(0.8) contrast(1.2); /* Keep images clear */
+}
+
+/* 🌞 Light Mode (default) */
+body {
+    background-color: #ffffff;
+    color: #222;
+}
+
+/* 🛠 Modern Toggle Switch */
+.switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    gap: 8px;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    top: 1px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+input:checked + .slider {
+    background-color: #007bff;
+}
+
+input:checked + .slider::before {
+    transform: translateX(20px);
+}
+

@@ -2,3 +2,9 @@
 
 # Let the API go to your Worker
 /api/*     /api/:splat     200
+
+/404.html  404
+/500.html  500
+/403.html  403
+/error.html  502
+/error.html  503

@@ -1,0 +1,16 @@
+# Pretty URLs → real files (internal rewrites, no redirect)
+#/               /index.html     200   # optional; Pages serves index.html at /
+/about           /aboutme.html   200
+/projects        /projects.html  200
+/music           /music.html     200
+/traintt         /traintt.html   200
+/contact         /contact.html   200
+/contact/        /contact.html   200
+
+# Block junk under /contact (what you asked for)
+# Anything like /contact/admningjfjh → 404 page with 404 status
+/contact/*       /404.html       404
+
+# Let the API go to your Worker untouched
+# (Workers fire before Pages anyway, but this makes intent explicit)
+/api/*           /api/:splat     200

@@ -146,18 +146,18 @@
         <!-- Same-origin API handled by Worker route: thejimross.co.uk/api/contact* -->
         <form id="contact-form" method="POST" action="/api/contact" style="margin-bottom:2em;max-width:420px;background:#2e3548;padding:1.5em;border-radius:12px;">
           <label class="form-label" for="name">Name:</label>
-          <input class="form-input" type="text" id="name" name="name" required autocomplete="name">
+          <input class="form-input" type="text" id="name" name="name" required autocomplete="name">  placeholder="Name"
 
           <label class="form-label" for="email">Email:</label>
-          <input class="form-input" type="email" id="email" name="email" required autocomplete="email">
+          <input class="form-input" type="email" id="email" name="email" required autocomplete="email">  placeholder="Email"
 
           <label class="form-label" for="phone">Phone (optional):</label>
           <input class="form-input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="e.g. +44 **** ***123"
           
           <label class="form-label" for="subject">Subject:</label>
-          <input class="form-input" type="text" id="subject" name="subject" autocomplete="subject">
+          <input class="form-input" type="text" id="subject" name="subject" autocomplete="subject"> placeholder="Subject"
 
-          <label class="form-label" for="message">Message:</label>
+          <label class="form-label" for="message">Message:</label> placeholder="Enter your message here..."
           <textarea class="form-textarea" id="message" name="message" rows="5" required></textarea>
 
           <button class="send-btn" type="submit">Send Message</button>
@@ -238,4 +238,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
 

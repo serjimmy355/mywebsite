@@ -162,30 +162,52 @@
           <p class="contact-note">I look forward to hearing from you!</p>
         </form>
 
-        <script>
-          document.getElementById('contact-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const form = e.target;
-            const status = document.getElementById('form-status');
-            status.textContent = '';
-            const data = new FormData(form);
-            try {
-              const res = await fetch(form.action, { method: 'POST', body: data });
-              if (res.ok) { // accept any 2xx from the Worker
-                status.textContent = 'Message sent! Thank you.';
-                status.style.color = 'green';
-                form.reset();
-              } else {
-                const text = await res.text().catch(()=> '');
-                status.textContent = `Error ${res.status}: ${text.slice(0,200)}`;
-                status.style.color = 'red';
-              }
-            } catch {
-              status.textContent = 'Network error. Please try again.';
-              status.style.color = 'red';
-            }
-          });
-        </script>
+       <script>
+(() => {
+  const form   = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  const btn    = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    status.textContent = 'Sending…';
+    status.style.color = 'inherit';
+    btn.disabled = true;
+
+    const action = '/api/contact'; // hard-set to be safe
+    const data   = new FormData(form);
+
+    try {
+      console.log('POST', action);
+      const res = await fetch(action, { method: 'POST', body: data, cache: 'no-store' });
+      const ct  = (res.headers.get('content-type') || '').toLowerCase();
+
+      console.log('Response', res.status, ct);
+
+      // Treat HTML as an error (that means you hit Pages, not the Worker)
+      const looksLikeHtml = ct.includes('text/html');
+
+      if ((res.status === 204 || res.status === 200) && !looksLikeHtml) {
+        status.textContent = 'Message sent! Thank you.';
+        status.style.color = 'green';
+        form.reset();
+      } else {
+        const body = await res.text().catch(()=>'');
+        status.textContent = `Error ${res.status}: ${looksLikeHtml ? 'Got HTML (wrong route)' : body.slice(0,200)}`;
+        status.style.color = 'red';
+      }
+    } catch (err) {
+      console.error(err);
+      status.textContent = 'Network error. Please try again.';
+      status.style.color = 'red';
+    } finally {
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
+
 
         <div class="contact-methods">
           <div class="contact-method">
@@ -213,3 +235,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+

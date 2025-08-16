@@ -7,8 +7,8 @@
 /contact         /contact.html   200
 /contact/        /contact.html   200
 
-# Block junk under /contact (what you asked for)
-# Anything like /contact/admningjfjh → 404 page with 404 status
+/contact         /contact.html   200
+/contact/        /contact        301
 /contact/*       /404.html       404
 
 # Let the API go to your Worker untouched

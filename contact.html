@@ -216,10 +216,21 @@
     status.style.color = 'inherit';
     btn.disabled = true;
 
-    // Combine country code and phone number
+    // Combine country code and phone number, but avoid double country code
     const countryCode = document.getElementById('country-code').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const combinedPhone = countryCode + phone.replace(/^0+/, ''); // Remove leading zeros from phone
+    let phone = document.getElementById('phone').value.trim();
+    // Remove leading zeros from phone
+    phone = phone.replace(/^0+/, '');
+    // If phone already starts with country code (with or without plus), use as-is
+    let combinedPhone;
+    const codeNoPlus = countryCode.replace('+', '');
+    if (phone.startsWith(countryCode) || phone.startsWith(codeNoPlus)) {
+      combinedPhone = phone;
+    } else if (phone.startsWith('+')) {
+      combinedPhone = phone;
+    } else {
+      combinedPhone = countryCode + phone;
+    }
 
     const data = new FormData(form);
     data.set('phone', combinedPhone); // Send as 'phone' field

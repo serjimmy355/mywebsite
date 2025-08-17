@@ -191,8 +191,17 @@
     status.style.color = 'inherit';
     btn.disabled = true;
 
+    // Combine country code and phone number
+    const countryCode = document.getElementById('country-code').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const fullPhone = countryCode + phone.replace(/^0+/, ''); // Remove leading zeros from phone
+
+    const data = new FormData(form);
+    data.set('full-phone', fullPhone); // Add combined field
+    data.delete('country-code'); // Optionally remove separate fields
+    data.delete('phone');
+
     const action = '/api/contact'; // hard-set to be safe
-    const data   = new FormData(form);
 
     try {
       const res = await fetch(action, { method: 'POST', body: data, cache: 'no-store' });

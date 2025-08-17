@@ -186,6 +186,11 @@ footer{padding:1rem 0;text-align:center;background:var(--clr-light);color:var(--
   transform: scale(1.038, 1.02);
 }
 
+.modal.active .modal-header:hover {
+  animation: none;
+  transform: none;
+}
+
 #project-showcase{padding:1rem 0 2rem}
 #project-showcase h2{text-align:left}
 #project-showcase .page-intro{

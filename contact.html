@@ -151,8 +151,21 @@
           <label class="form-label" for="email">Email:</label>
           <input class="form-input" type="email" id="email" name="email" required autocomplete="email" placeholder="Email">
 
+          <label class="form-label" for="country">Country:</label>
+          <select class="form-input" id="country" name="country" style="margin-bottom:12px;">
+            <option value="GB" data-code="+44">🇬🇧 United Kingdom (+44)</option>
+            <option value="US" data-code="+1">🇺🇸 United States (+1)</option>
+            <option value="CA" data-code="+1">🇨🇦 Canada (+1)</option>
+            <option value="AU" data-code="+61">🇦🇺 Australia (+61)</option>
+            <option value="IN" data-code="+91">🇮🇳 India (+91)</option>
+            <!-- Add more countries as needed -->
+          </select>
+
           <label class="form-label" for="phone">Phone:</label>
-          <input class="form-input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="e.g. 07*******123">
+          <div style="display:flex;align-items:center;margin-bottom:18px;">
+            <input class="form-input" type="text" id="country-code" name="country-code" value="+44" readonly style="width:70px;margin-right:8px;">
+            <input class="form-input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="e.g. 7123456789" style="flex:1;">
+          </div>
 
           <label class="form-label" for="subject">Subject:</label>
           <input class="form-input" type="text" id="subject" name="subject" autocomplete="subject" placeholder="Subject">
@@ -205,6 +218,14 @@
     }
   });
 })();
+
+// Country code logic
+const countrySelect = document.getElementById('country');
+const countryCodeInput = document.getElementById('country-code');
+countrySelect.addEventListener('change', function() {
+  const selected = countrySelect.options[countrySelect.selectedIndex];
+  countryCodeInput.value = selected.getAttribute('data-code');
+});
         </script>
 
         <div class="contact-methods">

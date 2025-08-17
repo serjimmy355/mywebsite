@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8">
@@ -194,12 +194,11 @@
     // Combine country code and phone number
     const countryCode = document.getElementById('country-code').value.trim();
     const phone = document.getElementById('phone').value.trim();
-    const fullPhone = countryCode + phone.replace(/^0+/, ''); // Remove leading zeros from phone
+    const combinedPhone = countryCode + phone.replace(/^0+/, ''); // Remove leading zeros from phone
 
     const data = new FormData(form);
-    data.set('full-phone', fullPhone); // Add combined field
+    data.set('phone', combinedPhone); // Send as 'phone' field
     data.delete('country-code'); // Optionally remove separate fields
-    data.delete('phone');
 
     const action = '/api/contact'; // hard-set to be safe
 
@@ -263,5 +262,4 @@ countrySelect.addEventListener('change', function() {
   <script src="script.js"></script>
 </body>
 </html>
-
 

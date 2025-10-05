@@ -198,6 +198,11 @@
           <label class="form-label" for="message">Message:</label>
           <textarea class="form-textarea" id="message" name="message" rows="5" required placeholder="Enter your message here..."></textarea>
 
+          <div class="turnstile-container" style="margin:12px 0 18px;display:flex;justify-content:center;">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAABiF2AdgiP_oN4Ni"
+ data-theme="dark" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired"></div>
+          </div>
+
           <button class="send-btn" type="submit">Send Message</button>
           <div id="form-status" aria-live="polite" style="margin-top:1em;font-weight:500;"></div>
           <p class="contact-note">I look forward to hearing from you!</p>
@@ -211,54 +216,55 @@
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
 
-    status.textContent = 'Sending…';
-    status.style.color = 'inherit';
-    btn.disabled = true;
-
-    // Combine country code and phone number, but avoid double country code
-    const countryCode = document.getElementById('country-code').value.trim();
-    let phone = document.getElementById('phone').value.trim();
-    // Remove leading zeros from phone
-    phone = phone.replace(/^0+/, '');
-    // If phone already starts with country code (with or without plus), use as-is
-    let combinedPhone;
-    const codeNoPlus = countryCode.replace('+', '');
-    if (phone.startsWith(countryCode) || phone.startsWith(codeNoPlus)) {
-      combinedPhone = phone;
-    } else if (phone.startsWith('+')) {
-      combinedPhone = phone;
-    } else {
-      combinedPhone = countryCode + phone;
+    // Ensure Turnstile token exists
+    let token = document.querySelector('input[name="cf-turnstile-response"]')?.value;
+    if (!token && window.turnstile) {
+      try { token = window.turnstile.getResponse(); } catch(_) {}
+    }
+    if(!token){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+      alert('Please complete the Turnstile challenge before submitting.');
+      return;
     }
 
-    const data = new FormData(form);
-    data.set('phone', combinedPhone); // Send as 'phone' field
-    data.delete('country-code'); // Optionally remove separate fields
-
-    const action = '/api/contact'; // hard-set to be safe
+    const formData = new FormData(form);
+    // country code + phone logic
+    const countrySelect = document.getElementById('country');
+    const countryCodeInput = document.getElementById('country-code');
+    const rawPhoneInput = document.getElementById('phone');
+    
+    let dialCode = countrySelect.options[countrySelect.selectedIndex].dataset.code || '';
+    let userVal = rawPhoneInput.value.trim();
+    // Remove any leading + if user included it
+    userVal = userVal.replace(/^\+/, '');
+    // If user typed the dial code already, remove duplication
+    if (dialCode && userVal.startsWith(dialCode.replace('+',''))) {
+      userVal = userVal.slice(dialCode.length - 1); // dialCode includes + so subtract 1
+    }
+    // Remove leading 0 from national numbers
+    userVal = userVal.replace(/^0+/, '');
+    const combined = `${dialCode}${userVal}`;
+    formData.set('phone', combined);
 
     try {
-      const res = await fetch(action, { method: 'POST', body: data, cache: 'no-store' });
-      const ct  = (res.headers.get('content-type') || '').toLowerCase();
-
-      // Treat HTML as an error (means Pages handled it, not the Worker)
-      const looksLikeHtml = ct.includes('text/html');
-
-      if ((res.status === 204 || res.status === 200) && !looksLikeHtml) {
-        status.textContent = 'Message sent! Thank you.';
-        status.style.color = 'green';
-        form.reset();
-      } else {
-        const body = await res.text().catch(()=>'');
-        status.textContent = `Error ${res.status}: ${looksLikeHtml ? 'Got HTML (wrong route)' : body.slice(0,200)}`;
-        status.style.color = 'red';
-      }
-    } catch (err) {
-      status.textContent = 'Network error. Please try again.';
-      status.style.color = 'red';
+      const res = await fetch(form.action, { method: 'POST', body: formData });
+      if(!res.ok) throw new Error('Network response was not ok');
+      const json = await res.json().catch(()=>({ ok:true }));
+      alert(json.message || 'Message sent successfully!');
+      form.reset();
+      countryCodeInput.value = '';
+      submitBtn.textContent = 'Send Message';
+    } catch(err){
+      console.error(err);
+      alert('There was a problem sending your message. Please try again.');
+      submitBtn.textContent = 'Send Message';
     } finally {
-      btn.disabled = false;
+      submitBtn.disabled = false; // Allow retry even if token reused; Turnstile may auto-refresh
     }
   });
 })();
@@ -270,6 +276,19 @@ countrySelect.addEventListener('change', function() {
   const selected = countrySelect.options[countrySelect.selectedIndex];
   countryCodeInput.value = selected.getAttribute('data-code');
 });
+        </script>
+
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+        <script>
+          function onTurnstileSuccess(token){
+            // enable submit when token present
+            const btn = document.querySelector('#contact-form button[type="submit"]');
+            btn.disabled = false;
+          }
+          function onTurnstileExpired(){
+            const btn = document.querySelector('#contact-form button[type="submit"]');
+            btn.disabled = true;
+          }
         </script>
 
         <div class="contact-methods">

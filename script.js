@@ -126,6 +126,19 @@ document.addEventListener('DOMContentLoaded', () => {
 "https://open.spotify.com/embed/artist/5zJB2KYIylCM6uPtl9R9yp?utm_source=generator&theme=0",
 "https://open.spotify.com/embed/artist/7cImXesjInq0e25gQLHWoV?utm_source=generator&theme=0",
 "https://open.spotify.com/embed/artist/7ptm7G8z8VVvwBnDq8fAmD?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/4NiJW4q9ichVqL1aUsgGAN?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/6SiyKSeJo6gcsS2NvuAbsl?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/4k1ELeJKT1ISyDv8JivPpB?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/3IXtskFMls8KXRipcIJT9y?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/1kkyfIopIiVvaPHHlbsfac?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/51J0q8S7W3kIEYHQi3EPqk?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/1Tsag5J854qxeOo2apszug?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/5rJVTTK0ucAxQhkUc0nXbH?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/22P5BkhcPUCtDGC9laXpDM?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/2xiIXseIJcq3nG7C8fHeBj?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/7AsPubxWM5tfW4hTZEL3aP?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/49b68DLRK5eCbtJf7Xx4Cc?utm_source=generator&theme=0",
+
 
       // Ensure these are the complete and correct embed SRCs from Spotify
     ];

@@ -146,7 +146,8 @@
         <h2>Send us a message!</h2>
 
         <!-- Same-origin API handled by Worker route: thejimross.co.uk/api/contact* -->
-        <form id="contact-form" method="POST" action="/api/contact" style="margin-bottom:2em;max-width:420px;background:#2e3548;padding:1.5em;border-radius:12px;">
+  <div class="accent-gradient-surface accent-gradient-surface--form">
+  <form id="contact-form" class="contact-form-card" method="POST" action="/api/contact">
           <label class="form-label" for="name">Name:</label>
           <input class="form-input" type="text" id="name" name="name" required autocomplete="name" placeholder="Name">
 
@@ -208,7 +209,8 @@
           <button class="send-btn" type="submit">Send Message</button>
           <div id="form-status" aria-live="polite" style="margin-top:1em;font-weight:500;"></div>
           <p class="contact-note">I look forward to hearing from you!</p>
-        </form>
+  </form>
+  </div>
 
         <script>
 (() => {

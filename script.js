@@ -138,6 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
 "https://open.spotify.com/embed/artist/2xiIXseIJcq3nG7C8fHeBj?utm_source=generator&theme=0",
 "https://open.spotify.com/embed/artist/7AsPubxWM5tfW4hTZEL3aP?utm_source=generator&theme=0",
 "https://open.spotify.com/embed/artist/49b68DLRK5eCbtJf7Xx4Cc?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/4PY51S3HuOMhnZA0Sx8FRN?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/6O7MpKrY91vlCd4Osi6XKs?utm_source=generator&theme=0",
+"https://open.spotify.com/embed/artist/0Ak6DLKHtpR6TEEnmcorKA?utm_source=generator&theme=0",
+
 
 
       // Ensure these are the complete and correct embed SRCs from Spotify

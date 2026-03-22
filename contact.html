@@ -109,6 +109,13 @@
       color: var(--accent-blue);
       text-decoration: underline;
     }
+    .hp-field {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8455447739531378"
      crossorigin="anonymous"></script>
@@ -153,6 +160,12 @@
 
           <label class="form-label" for="email">Email:</label>
           <input class="form-input" type="email" id="email" name="email" required autocomplete="email" placeholder="Email">
+
+          <div class="hp-field" aria-hidden="true">
+            <label for="website">Leave this field blank</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" id="form-started-at" name="form_started_at" value="">
 
           <label class="form-label" for="country">Country:</label>
           <select class="form-input" id="country" name="country" style="margin-bottom:12px;">
@@ -217,12 +230,36 @@
   const form   = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   const btn    = form.querySelector('button[type="submit"]');
+  const formStartedAtInput = document.getElementById('form-started-at');
+  const blockedSenderDomains = ['thejimross.co.uk'];
+
+  function markFormStartTime() {
+    formStartedAtInput.value = String(Date.now());
+  }
+
+  markFormStartTime();
+
+  function isBlockedSenderEmail(value) {
+    const trimmed = (value || '').trim().toLowerCase();
+    const parts = trimmed.split('@');
+    if (parts.length !== 2) return false;
+    const domain = parts[1];
+    return blockedSenderDomains.some((blocked) => domain === blocked || domain.endsWith(`.${blocked}`));
+  }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
+
+    const emailInput = document.getElementById('email');
+    if (isBlockedSenderEmail(emailInput.value)) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+      alert('Please use an email address from a different domain.');
+      return;
+    }
 
     // Ensure Turnstile token exists
     let token = document.querySelector('input[name="cf-turnstile-response"]')?.value;
@@ -257,15 +294,16 @@
 
     try {
       const res = await fetch(form.action, { method: 'POST', body: formData });
-      if(!res.ok) throw new Error('Network response was not ok');
-      const json = await res.json().catch(()=>({ ok:true }));
+      const json = await res.json().catch(()=>({ ok: res.ok }));
+      if(!res.ok) throw new Error(json.message || json.error || 'Network response was not ok');
       alert(json.message || 'Message sent successfully!');
       form.reset();
       countryCodeInput.value = '';
+      markFormStartTime();
       submitBtn.textContent = 'Send Message';
     } catch(err){
       console.error(err);
-      alert('There was a problem sending your message. Please try again.');
+      alert(err.message || 'There was a problem sending your message. Please try again.');
       submitBtn.textContent = 'Send Message';
     } finally {
       submitBtn.disabled = false; // Allow retry even if token reused; Turnstile may auto-refresh
